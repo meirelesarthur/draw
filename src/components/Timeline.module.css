@@ -1,0 +1,186 @@
+.section {
+  padding: 28px 20px 36px;
+}
+
+/* ── Column labels ── */
+.columnLabels {
+  display: grid;
+  grid-template-columns: 1fr 86px 1fr;
+  gap: 0;
+  margin-bottom: 20px;
+  padding: 0 4px;
+}
+
+.labelOdette {
+  font-family: var(--font-raleway);
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--color-gray-mid);
+  text-align: center;
+}
+
+.labelOdette strong {
+  display: block;
+  font-weight: 700;
+}
+
+.labelRaquel {
+  font-family: var(--font-raleway);
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--color-orange);
+  text-align: center;
+}
+
+.labelRaquel strong {
+  display: block;
+  font-weight: 700;
+}
+
+.labelCenter {
+  /* spacer for the year column */
+}
+
+/* ── Wrapper with vertical line ── */
+.timelineWrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.verticalLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: linear-gradient(to bottom, var(--color-text) 0%, var(--color-brown) 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── Each timeline row ── */
+.row {
+  display: grid;
+  grid-template-columns: 1fr 18px 86px 18px 1fr;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+/* LEFT cell – ODETTE events, right-aligned */
+.leftCell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  min-height: 1px;
+}
+
+/* RIGHT cell – RAQUEL events, left-aligned */
+.rightCell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  min-height: 1px;
+}
+
+/* Connector columns */
+.connLeft,
+.connRight {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 11px;
+  overflow: visible;
+}
+
+.connLine {
+  display: block;
+  width: calc(100% + 4px);
+  margin: 0 -2px;
+  height: 2px;
+  background: var(--color-brown);
+}
+
+/* ── Year pill ── */
+.yearCell {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+}
+
+.pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 1px;
+  padding: 4px 6px;
+  border-radius: 3px;
+  border: 2px solid var(--color-brown-dark);
+  font-family: var(--font-roboto);
+  font-weight: 700;
+  font-size: 9.5px;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+
+.pillBrown {
+  background: var(--color-brown);
+  color: var(--color-white);
+  border-color: var(--color-brown-dark);
+}
+
+.pillDark {
+  background: var(--color-text);
+  color: var(--color-white);
+  border-color: var(--color-text);
+}
+
+.pillSub {
+  display: block;
+  font-size: 8.5px;
+  font-family: var(--font-roboto);
+  font-weight: 700;
+}
+
+/* ── Stacked cards (multiple cards in one cell, vertical) ── */
+.cardStack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+  width: 100%;
+}
+
+/* ── Cards side by side in a row ── */
+.cardRow {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: flex-start;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+/* ── Card with icon beside it ── */
+.cardWithIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.pulse {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}

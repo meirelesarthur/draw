@@ -1,0 +1,155 @@
+.section {
+  display: flex;
+  min-height: 360px;
+}
+
+/* Dark vertical label on the LEFT */
+.sideLabel {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  background: linear-gradient(180deg, #634f51 22%, #896d70 59%);
+  padding: 24px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 56px;
+}
+
+.sideLabel span {
+  font-family: var(--font-raleway);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--color-white);
+  white-space: nowrap;
+  letter-spacing: 0.03em;
+}
+
+/* Three action columns filling full width */
+.actionsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  flex: 1;
+  min-width: 0;
+}
+
+.actionColumn {
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-left: 1px solid rgba(137, 109, 112, 0.2);
+}
+
+.actionColumn:first-child {
+  border-left: none;
+}
+
+.gray {
+  background: var(--color-gray-light);
+}
+
+.peach {
+  background: var(--color-peach-light);
+}
+
+.actionHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.actionTitle {
+  font-family: var(--font-raleway);
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.blockText {
+  font-family: var(--font-inter);
+  font-size: 11px;
+  line-height: 1.65;
+  color: var(--color-text);
+}
+
+.divider {
+  height: 1px;
+  background: var(--color-brown);
+  opacity: 0.25;
+}
+
+.requerimentos {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.requerimentosTitle {
+  font-family: var(--font-inter);
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+.subLabel {
+  font-family: var(--font-inter);
+  font-size: 10.5px;
+  color: var(--color-text);
+  margin-top: 2px;
+  opacity: 0.85;
+}
+
+.list {
+  font-family: var(--font-inter);
+  font-size: 10.5px;
+  line-height: 1.65;
+  color: var(--color-text);
+  padding-left: 1.4em;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+}
+
+.docRow {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0,0,0,0.07);
+}
+
+.docPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-inter);
+  font-size: 10px;
+  font-weight: 700;
+  color: #c85c0e;
+  text-decoration: none;
+  background: rgba(200, 92, 14, 0.07);
+  border: 1px solid rgba(200, 92, 14, 0.2);
+  border-radius: 6px;
+  padding: 5px 10px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.docPill:hover {
+  background: rgba(200, 92, 14, 0.14);
+  border-color: rgba(200, 92, 14, 0.4);
+}
+
+.docPill svg {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+}

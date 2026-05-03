@@ -1,0 +1,126 @@
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { verificarSenha, autenticar, isAutenticado } from '../auth/auth'
+import styles from './Login.module.css'
+
+export default function Login() {
+  const [senha, setSenha] = useState('')
+  const [erro, setErro] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [showPass, setShowPass] = useState(false)
+  const [errKey, setErrKey] = useState(0) // força re-mount da animação de shake
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (isAutenticado()) navigate('/', { replace: true })
+  }, [navigate])
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setLoading(true)
+    setErro(false)
+    setTimeout(() => {
+      if (verificarSenha(senha)) {
+        autenticar()
+        navigate('/', { replace: true })
+      } else {
+        setErro(true)
+        setErrKey(k => k + 1)
+        setSenha('')
+        setLoading(false)
+      }
+    }, 600)
+  }
+
+  return (
+    <div className={styles.root}>
+      <div className={styles.left}>
+        <div className={styles.leftInner}>
+          <div className={styles.brand}>
+            <span className={styles.brandMark}>DTL</span>
+            <span className={styles.brandName}>Draw the Law</span>
+          </div>
+          <h1 className={styles.leftTitle}>
+            Memorial<br />Jurídico<br />Digital
+          </h1>
+          <p className={styles.leftSub}>
+            Plataforma privada para acompanhamento estratégico de processos complexos.
+          </p>
+          <div className={styles.leftDivider} />
+          <p className={styles.leftLegal}>
+            Acesso restrito. Uso exclusivo de clientes e colaboradores autorizados de NERY Advogados.
+          </p>
+        </div>
+      </div>
+
+      <div className={styles.right}>
+        <form className={styles.card} onSubmit={handleSubmit}>
+          <div className={styles.cardHeader}>
+            <p className={styles.cardEyebrow}>Área restrita</p>
+            <h2 className={styles.cardTitle}>Acesso à plataforma</h2>
+          </div>
+
+          <div className={styles.field}>
+            <label className={styles.label} htmlFor="senha">Senha de acesso</label>
+            <div className={styles.inputWrap}>
+              <input
+                key={errKey}
+                id="senha"
+                type={showPass ? 'text' : 'password'}
+                className={`${styles.input} ${erro ? styles.inputError : ''}`}
+                value={senha}
+                onChange={e => { setSenha(e.target.value); setErro(false) }}
+                placeholder="••••••••••"
+                autoComplete="current-password"
+                autoFocus
+              />
+              <button
+                type="button"
+                className={styles.eyeBtn}
+                onClick={() => setShowPass(v => !v)}
+                aria-label={showPass ? 'Ocultar senha' : 'Mostrar senha'}
+                tabIndex={-1}
+              >
+                {showPass ? <EyeOff /> : <Eye />}
+              </button>
+            </div>
+            {erro && (
+              <p className={styles.errorMsg}>Senha incorreta. Tente novamente.</p>
+            )}
+          </div>
+
+          <button
+            type="submit"
+            className={styles.btn}
+            disabled={loading || !senha}
+          >
+            {loading ? (
+              <><span className={styles.spinner} /> Verificando…</>
+            ) : 'Entrar na plataforma'}
+          </button>
+
+          <p className={styles.hint}>
+            NERY Advogados · Confidencial
+          </p>
+        </form>
+      </div>
+    </div>
+  )
+}
+
+function Eye() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M1 10s3.5-6 9-6 9 6 9 6-3.5 6-9 6-9-6-9-6z"/>
+      <circle cx="10" cy="10" r="2.5"/>
+    </svg>
+  )
+}
+
+function EyeOff() {
+  return (
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M2 2l16 16M8.5 8.6A2.5 2.5 0 0012.4 12.5M6 5.2C3.5 6.8 2 10 2 10s3 5.5 8 5.5a8 8 0 003.7-.9M14.5 14C16.8 12.3 18 10 18 10s-3-5.5-8-5.5c-.8 0-1.6.1-2.3.3"/>
+    </svg>
+  )
+}

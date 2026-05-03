@@ -1,0 +1,264 @@
+.root {
+  min-height: 100vh;
+  background: #f7f4f2;
+  display: flex;
+  flex-direction: column;
+}
+
+.rootLeaving {
+  animation: pageExit 0.4s var(--ease-in) both;
+  pointer-events: none;
+}
+
+/* ── NAV ── */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  background: #fff;
+  animation: fadeDown var(--dur-normal) var(--ease-snap) both;
+}
+
+.navBrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navMark {
+  font-family: var(--font-raleway);
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: #c85c0e;
+  background: rgba(200, 92, 14, 0.1);
+  padding: 4px 9px;
+  border-radius: 4px;
+}
+
+.navName {
+  font-family: var(--font-raleway);
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+}
+
+.navSair {
+  font-family: var(--font-inter);
+  font-size: 12px;
+  font-weight: 600;
+  color: #888;
+  background: none;
+  border: 1px solid #e0dbd8;
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition:
+    color        var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.navSair:hover {
+  color: #c85c0e;
+  border-color: #c85c0e;
+}
+
+/* ── MAIN ── */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 48px;
+}
+
+/* ── GREETING ── */
+.greeting {
+  text-align: center;
+  margin-bottom: 56px;
+  animation: fadeUp var(--dur-slow) var(--ease-snap) 80ms both;
+}
+
+.greetingLabel {
+  font-family: var(--font-inter);
+  font-size: 16px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.greetingTitle {
+  font-family: var(--font-raleway);
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1.1;
+  color: #1a1008;
+}
+
+/* ── CARDS ── */
+.cards {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  max-width: 880px;
+  margin-bottom: 56px;
+}
+
+/* Staggered entrance */
+.cards > *:nth-child(1) { animation: cardEntrance var(--dur-slow) var(--ease-snap) 160ms both; }
+.cards > *:nth-child(2) { animation: cardEntrance var(--dur-slow) var(--ease-snap) 240ms both; }
+
+.card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1.5px solid #e8e2de;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    box-shadow   var(--dur-normal) var(--ease-out),
+    transform    var(--dur-fast) var(--ease-out);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  will-change: transform;
+}
+
+/* Inner button fills the card */
+.cardInner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  padding: 40px 36px 32px;
+  background: none;
+  border: none;
+  text-align: left;
+  width: 100%;
+  flex: 1;
+  cursor: pointer;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.cardPersonalizado::before {
+  background: #c85c0e;
+}
+
+.cardPadrao::before {
+  background: linear-gradient(90deg, #BD48D0, #724AFF);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+}
+
+.card:active {
+  transform: translateY(-1px) scale(0.995);
+  transition-duration: var(--dur-micro);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.cardPersonalizado:hover {
+  border-color: #c85c0e;
+}
+
+.cardPadrao:hover {
+  border-color: #724AFF;
+}
+
+.cardIcon {
+  margin-bottom: 28px;
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  background: #f7f4f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--dur-fast) var(--ease-out);
+}
+
+.cardPersonalizado:hover .cardIcon {
+  background: rgba(200, 92, 14, 0.08);
+}
+
+.cardPadrao:hover .cardIcon {
+  background: rgba(114, 74, 255, 0.06);
+}
+
+.cardContent {
+  flex: 1;
+}
+
+.cardEyebrow {
+  display: block;
+  font-family: var(--font-inter);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #c85c0e;
+  margin-bottom: 8px;
+}
+
+.cardEyebrowPadrao {
+  color: #724AFF;
+}
+
+.cardTitle {
+  font-family: var(--font-raleway);
+  font-weight: 700;
+  font-size: 24px;
+  color: #1a1008;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.cardDesc {
+  font-family: var(--font-inter);
+  font-size: 13px;
+  line-height: 1.7;
+  color: #888;
+}
+
+.cardArrow {
+  margin-top: 28px;
+  font-size: 20px;
+  color: #c85c0e;
+  font-weight: 300;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.cardArrowPadrao {
+  color: #724AFF;
+}
+
+.card:hover .cardArrow {
+  transform: translateX(6px);
+}
+
+/* ── FOOTER ── */
+.footer {
+  font-family: var(--font-inter);
+  font-size: 11px;
+  color: #bbb;
+  text-align: center;
+  animation: fadeIn var(--dur-xslow) var(--ease-out) 400ms both;
+}

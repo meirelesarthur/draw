@@ -1,0 +1,108 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 28px 0 0 48px;
+  border-bottom: 2px solid var(--color-gray-light);
+}
+
+.left {
+  flex: 1;
+  min-width: 0;
+  padding-bottom: 28px;
+}
+
+.title {
+  font-family: var(--font-raleway);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.15;
+  color: var(--color-text);
+  margin-bottom: 10px;
+}
+
+.titleDivider {
+  height: 2px;
+  background: var(--color-orange);
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-family: var(--font-raleway);
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+/* Testament card */
+.testamentCard {
+  border: 1.5px solid var(--color-orange);
+  border-radius: 4px;
+  padding: 10px 14px;
+  background: var(--color-white);
+  box-shadow: 5px 8px 4px rgba(0, 0, 0, 0.12);
+  width: 185px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-self: center;
+}
+
+.testamentTitle {
+  font-family: var(--font-raleway);
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.testamentDivider {
+  height: 1px;
+  background: var(--color-brown);
+  opacity: 0.4;
+}
+
+.testamentSub {
+  font-family: var(--font-raleway);
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--color-text);
+  opacity: 0.8;
+}
+
+/* Orange arrow using PNG asset */
+.principleOuter {
+  position: relative;
+  width: 500px;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.principleArrow {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+.principleBody {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 27%;
+  display: flex;
+  align-items: center;
+  padding: 12px 28px 12px calc(8% + 18px);
+  z-index: 1;
+}
+
+.principleText {
+  font-family: var(--font-raleway);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-white);
+}

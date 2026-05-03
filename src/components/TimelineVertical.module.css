@@ -1,0 +1,307 @@
+/* ── TIMELINE VERTICAL (shadcn-timeline pattern) ── */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+}
+
+/* Each row: date | dot+connector | content */
+.item {
+  display: grid;
+  grid-template-columns: 148px 44px 1fr;
+  position: relative;
+  animation: fadeUp var(--dur-slow) var(--ease-snap) both;
+  animation-delay: calc(var(--i, 0) * 55ms);
+}
+
+/* ── DATE COLUMN ── */
+.dateCol {
+  padding-right: 0;
+  padding-top: 10px;
+  text-align: right;
+  padding-right: 4px;
+}
+
+.date {
+  font-family: var(--font-inter);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #b0a8a2;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* ── CENTER COLUMN: dot + vertical line ── */
+.centerCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* The dot button */
+.dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  /* white ring — the signature shadcn-timeline look */
+  box-shadow: 0 0 0 4px #fff, 0 0 0 5.5px #e4deda;
+  transition:
+    transform    var(--dur-fast) var(--ease-out),
+    box-shadow   var(--dur-fast) var(--ease-out);
+  color: #9a8a80;
+  background: #f0ebe7;
+}
+
+.dot:hover {
+  transform: scale(1.12);
+}
+
+.dot:active {
+  transform: scale(0.96);
+  transition-duration: var(--dur-micro);
+}
+
+/* dot svg */
+.dot svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.dotKey {
+  background: rgba(200, 92, 14, 0.12);
+  color: #c85c0e;
+  box-shadow: 0 0 0 4px #fff, 0 0 0 5.5px rgba(200, 92, 14, 0.25);
+}
+
+.dotAlert {
+  background: rgba(176, 48, 16, 0.10);
+  color: #b03010;
+  box-shadow: 0 0 0 4px #fff, 0 0 0 5.5px rgba(176, 48, 16, 0.22);
+}
+
+.dotNormal {
+  background: #f0ebe7;
+  color: #9a8a80;
+}
+
+/* Vertical connector line */
+.connector {
+  flex: 1;
+  width: 1.5px;
+  background: #e4deda;
+  margin-top: 5px;
+  min-height: 20px;
+  transition: background var(--dur-normal) var(--ease-out);
+}
+
+.itemOpen .connector {
+  background: linear-gradient(to bottom, #e4deda, #ede8e3);
+}
+
+/* ── CONTENT COLUMN ── */
+.contentCol {
+  padding-left: 18px;
+  padding-bottom: 0;
+}
+
+/* Clickable header row (title + tags + chevron) */
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px 0 10px;
+  text-align: left;
+  width: 100%;
+  border-radius: 6px;
+  transition: none;
+}
+
+.header:hover .title {
+  color: #c85c0e;
+}
+
+.title {
+  font-family: var(--font-inter);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #1C1410;
+  line-height: 1.4;
+  flex: 1;
+  transition: color var(--dur-fast) var(--ease-out);
+  letter-spacing: -0.01em;
+}
+
+.titleKey   { color: #c85c0e; }
+.titleAlert { color: #b03010; }
+
+/* tag pills */
+.tags {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+  margin-top: 3px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-family: var(--font-inter);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  padding: 2px 6px;
+  white-space: nowrap;
+}
+
+.tagKey {
+  background: rgba(200, 92, 14, 0.10);
+  color: #c85c0e;
+}
+
+.tagAlert {
+  background: rgba(176, 48, 16, 0.10);
+  color: #b03010;
+}
+
+.tagDoc {
+  background: #f0ebe7;
+  color: #9a8a80;
+}
+
+/* chevron */
+.chevron {
+  width: 16px;
+  height: 16px;
+  color: #c0b0a8;
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: transform var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+  color: #c85c0e;
+}
+
+/* ── EXPANDED DETAIL ── */
+.detail {
+  padding-bottom: 24px;
+  animation: fadeUp var(--dur-normal) var(--ease-snap) both;
+}
+
+.desc {
+  font-family: var(--font-inter);
+  font-size: 13px;
+  color: #5a4a40;
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+
+/* Document list */
+.docs {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.doc {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: #faf8f6;
+  border: 1px solid #ede8e3;
+  border-radius: 8px;
+  transition: background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+
+.doc:hover {
+  background: #f4f0ec;
+  border-color: #e0d8d2;
+}
+
+.docIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-inter);
+  font-size: 9px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* icon variant colors — matching MemorialPadrao */
+.ic-c { background: rgba(200, 92, 14, 0.10); color: #c85c0e; }
+.ic-f { background: rgba(28, 20, 16, 0.07);  color: #3a2a1e; }
+.ic-j { background: rgba(137, 109, 112, 0.12); color: #896d70; }
+.ic-e { background: rgba(176, 64, 16, 0.10);  color: #b04010; }
+
+.docInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.docName {
+  font-family: var(--font-inter);
+  font-size: 12px;
+  font-weight: 600;
+  color: #1C1410;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.docMeta {
+  font-family: var(--font-inter);
+  font-size: 10px;
+  color: #9a8a80;
+  margin-top: 2px;
+}
+
+.docLink {
+  font-family: var(--font-inter);
+  font-size: 11px;
+  font-weight: 700;
+  color: #c85c0e;
+  text-decoration: none;
+  flex-shrink: 0;
+  white-space: nowrap;
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.docLink:hover {
+  opacity: 0.75;
+}
+
+.docLinkDisabled {
+  font-family: var(--font-inter);
+  font-size: 11px;
+  font-weight: 600;
+  color: #c0b0a8;
+  flex-shrink: 0;
+  cursor: default;
+}
+
+/* ── SPACER: last item has no connector, just pad the bottom ── */
+.itemLast .contentCol {
+  padding-bottom: 8px;
+}
