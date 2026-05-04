@@ -1,7 +1,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: #fff;
+  background: #071445;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,7 +38,7 @@
   font-size: clamp(22px, 3.2vmin, 42px);
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #c85c0e;
+  color: #fff;
   text-align: center;
 }
 

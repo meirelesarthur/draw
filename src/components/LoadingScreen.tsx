@@ -10,8 +10,8 @@ export default function LoadingScreen({ exiting = false }: Props) {
     <div className={`${styles.overlay} ${exiting ? styles.exiting : ''}`}>
       <div className={styles.rings}>
         <MagicRings
-          color="#c85c0e"
-          colorTwo="#f0a060"
+          color="#8A4AF1"
+          colorTwo="#B47DFF"
           ringCount={6}
           speed={1.1}
           attenuation={9}

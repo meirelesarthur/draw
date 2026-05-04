@@ -41,75 +41,93 @@ export default function Login() {
 
   return (
     <div className={styles.root}>
-      <div className={styles.left}>
-        <div className={styles.leftInner}>
-          <div className={styles.brand}>
-            <span className={styles.brandMark}>DTL</span>
-            <span className={styles.brandName}>Draw the Law</span>
-          </div>
-          <h1 className={styles.leftTitle}>
-            Memorial<br />Jurídico<br />Digital
-          </h1>
-          <p className={styles.leftSub}>
-            Plataforma privada para acompanhamento estratégico de processos complexos.
-          </p>
-          <div className={styles.leftDivider} />
-          <p className={styles.leftLegal}>
-            Acesso restrito. Uso exclusivo de clientes e colaboradores autorizados de NERY Advogados.
-          </p>
-        </div>
-      </div>
+      <div className={styles.card}>
 
-      <div className={styles.right}>
-        <form className={styles.card} onSubmit={handleSubmit}>
-          <div className={styles.cardHeader}>
-            <p className={styles.cardEyebrow}>Área restrita</p>
-            <h2 className={styles.cardTitle}>Acesso à plataforma</h2>
-          </div>
-
-          <div className={styles.field}>
-            <label className={styles.label} htmlFor="senha">Senha de acesso</label>
-            <div className={styles.inputWrap}>
-              <input
-                key={errKey}
-                id="senha"
-                type={showPass ? 'text' : 'password'}
-                className={`${styles.input} ${erro ? styles.inputError : ''}`}
-                value={senha}
-                onChange={e => { setSenha(e.target.value); setErro(false) }}
-                placeholder="••••••••••"
-                autoComplete="current-password"
-                autoFocus
-              />
-              <button
-                type="button"
-                className={styles.eyeBtn}
-                onClick={() => setShowPass(v => !v)}
-                aria-label={showPass ? 'Ocultar senha' : 'Mostrar senha'}
-                tabIndex={-1}
-              >
-                {showPass ? <EyeOff /> : <Eye />}
-              </button>
+        {/* ── LEFT PANEL ── */}
+        <div className={styles.left}>
+          <div className={styles.leftTop}>
+            <div className={styles.brand}>
+              <span className={styles.brandMark}>DTL</span>
+              <span className={styles.brandName}>Draw the Law</span>
             </div>
-            {erro && (
-              <p className={styles.errorMsg}>Senha incorreta. Tente novamente.</p>
-            )}
+            <h1 className={styles.leftTitle}>
+              Memorial<br />Jurídico<br />Digital
+            </h1>
+            <p className={styles.leftSub}>
+              Plataforma privada para acompanhamento estratégico de processos complexos.
+            </p>
+            <div className={styles.leftDeco}>
+              <div className={`${styles.leftDecoBar} ${styles.leftDecoBarActive}`} />
+              <div className={`${styles.leftDecoBar} ${styles.leftDecoBarInactive}`} />
+              <div className={`${styles.leftDecoBar} ${styles.leftDecoBarInactive}`} />
+            </div>
           </div>
 
-          <button
-            type="submit"
-            className={styles.btn}
-            disabled={loading || !senha}
-          >
-            {loading ? (
-              <><span className={styles.spinner} /> Verificando…</>
-            ) : 'Entrar na plataforma'}
-          </button>
+          <div className={styles.leftBottom}>
+            <div className={styles.leftDivider} />
+            <p className={styles.leftLegal}>
+              Acesso restrito. Uso exclusivo de clientes e colaboradores autorizados de NERY Advogados.
+            </p>
+          </div>
+        </div>
 
-          <p className={styles.hint}>
-            NERY Advogados · Confidencial
-          </p>
-        </form>
+        {/* ── RIGHT PANEL ── */}
+        <div className={styles.right}>
+          <form className={styles.form} onSubmit={handleSubmit}>
+
+            <div className={styles.rightHeader}>
+              <div className={styles.rightLogo}>
+                <div className={styles.rightLogoMark}>DTL</div>
+                <span className={styles.rightLogoName}>NERY Advogados</span>
+              </div>
+              <h2 className={styles.cardTitle}>Bem-vindo de volta</h2>
+              <p className={styles.cardEyebrow}>Acesse sua conta para continuar</p>
+            </div>
+
+            <div className={styles.field}>
+              <label className={styles.label} htmlFor="senha">Senha de acesso</label>
+              <div className={styles.inputWrap}>
+                <input
+                  key={errKey}
+                  id="senha"
+                  type={showPass ? 'text' : 'password'}
+                  className={`${styles.input} ${erro ? styles.inputError : ''}`}
+                  value={senha}
+                  onChange={e => { setSenha(e.target.value); setErro(false) }}
+                  placeholder="••••••••••"
+                  autoComplete="current-password"
+                  autoFocus
+                />
+                <button
+                  type="button"
+                  className={styles.eyeBtn}
+                  onClick={() => setShowPass(v => !v)}
+                  aria-label={showPass ? 'Ocultar senha' : 'Mostrar senha'}
+                  tabIndex={-1}
+                >
+                  {showPass ? <EyeOff /> : <Eye />}
+                </button>
+              </div>
+              {erro && (
+                <p className={styles.errorMsg}>Senha incorreta. Tente novamente.</p>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              className={styles.btn}
+              disabled={loading || !senha}
+            >
+              {loading
+                ? <><span className={styles.spinner} /> Verificando…</>
+                : 'Entrar na plataforma'
+              }
+            </button>
+
+            <p className={styles.hint}>NERY Advogados · Confidencial</p>
+          </form>
+        </div>
+
       </div>
     </div>
   )
