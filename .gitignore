@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Repositório externo — apenas local, não enviar ao git
+rtk/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

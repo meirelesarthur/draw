@@ -1,10 +1,10 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { sair } from '../auth/auth'
 import { tlData, factData } from '../data/memorialPadraoData'
 import TimelineVertical from '../components/TimelineVertical'
 import CountUp from '../components/CountUp'
-import TiltWrapper from '../components/TiltWrapper'
+import { ParticleCard, GlobalSpotlight } from '../components/MagicBento'
 import styles from './MemorialPadrao.module.css'
 
 type Filter = 'todos' | 'controvertido' | 'incontroverso' | 'pendente'
@@ -21,6 +21,7 @@ const NAV = [
 
 export default function MemorialPadrao() {
   const navigate = useNavigate()
+  const mainRef = useRef<HTMLElement>(null)
   const [activeSection, setActiveSection] = useState<Section>('resumo')
   const [filter, setFilter] = useState<Filter>('todos')
   const [openFact, setOpenFact] = useState<number | null>(null)
@@ -51,8 +52,8 @@ export default function MemorialPadrao() {
         <div className={styles.sidebarTop}>
           <div className={styles.sidebarBrand}>
             <div className={styles.brandLogo}>
-              <span className={styles.brandNery}>NERY</span>
-              <span className={styles.brandAdv}>ADVOGADOS</span>
+              <span className={styles.brandNery}>DTL</span>
+              <span className={styles.brandAdv}>DRAW THE LAW</span>
             </div>
           </div>
 
@@ -91,7 +92,8 @@ export default function MemorialPadrao() {
       </aside>
 
       {/* ── MAIN ── */}
-      <main className={styles.main}>
+      <main ref={mainRef} className={`${styles.main} mb-bento-section`}>
+        <GlobalSpotlight gridRef={mainRef} />
 
         {/* PAGE HEADER */}
         <div className={styles.pageHeader}>
@@ -156,12 +158,10 @@ export default function MemorialPadrao() {
                     { label: 'Dano central',         value: 'Cancelamento de 3 contratos comerciais + inscrição indevida no SERASA por 7 meses' },
                     { label: 'Fundamento legal',     value: 'CC art. 422 (boa-fé), art. 476 (exceptio), art. 403 (nexo causal), Súmulas STJ 227 e 385' },
                   ].map(r => (
-                    <TiltWrapper key={r.label} rotateAmplitude={6} scaleOnHover={1.03}>
-                      <div className={styles.resumoCard}>
-                        <span className={styles.resumoCardLabel}>{r.label}</span>
-                        <p className={styles.resumoCardValue}>{r.value}</p>
-                      </div>
-                    </TiltWrapper>
+                    <ParticleCard key={r.label} className={`${styles.resumoCard} magic-bento-card`}>
+                      <span className={styles.resumoCardLabel}>{r.label}</span>
+                      <p className={styles.resumoCardValue}>{r.value}</p>
+                    </ParticleCard>
                   ))}
                 </div>
 
@@ -241,26 +241,24 @@ export default function MemorialPadrao() {
                   <SubHeader label="Pontos Críticos" action="Ver tudo" onAction={() => goTo('criticos')} />
                   <div className={styles.criticosGrid}>
                     {controversos.map((fact, i) => (
-                      <TiltWrapper key={i} rotateAmplitude={8} scaleOnHover={1.03}>
-                        <div className={`${styles.criticoCard} ${fact.statusKey === 'pendente' ? styles.criticoPend : ''}`}>
-                          <div className={styles.criticoHeader}>
-                            <span className={`${styles.criticoStatus} ${fact.statusKey === 'pendente' ? styles.criticoStatusPend : ''}`}>
-                              {fact.status}
-                            </span>
-                            <span className={styles.criticoNum}>{String(factData.indexOf(fact) + 1).padStart(2, '0')}</span>
-                          </div>
-                          <p className={styles.criticoTitle}>{fact.title}</p>
-                          <p className={styles.criticoTese}>{fact.tese}</p>
-                          <div className={styles.criticoDocs}>
-                            {fact.docs.map((d, di) => (
-                              <span key={di} className={styles.criticoDoc}>
-                                <span className={`${styles.criticoDocIcon} ${styles[d.icon as keyof typeof styles]}`}>{d.l}</span>
-                                {d.name}
-                              </span>
-                            ))}
-                          </div>
+                      <ParticleCard key={i} className={`${styles.criticoCard} ${fact.statusKey === 'pendente' ? styles.criticoPend : ''} magic-bento-card`}>
+                        <span className={styles.criticoNum}>{String(factData.indexOf(fact) + 1).padStart(2, '0')}</span>
+                        <div className={styles.criticoHeader}>
+                          <span className={`${styles.criticoStatus} ${fact.statusKey === 'pendente' ? styles.criticoStatusPend : ''}`}>
+                            {fact.status}
+                          </span>
                         </div>
-                      </TiltWrapper>
+                        <p className={styles.criticoTitle}>{fact.title}</p>
+                        <p className={styles.criticoTese}>{fact.tese}</p>
+                        <div className={styles.criticoDocs}>
+                          {fact.docs.map((d, di) => (
+                            <span key={di} className={styles.criticoDoc}>
+                              <span className={`${styles.criticoDocIcon} ${styles[d.icon as keyof typeof styles]}`}>{d.l}</span>
+                              {d.name}
+                            </span>
+                          ))}
+                        </div>
+                      </ParticleCard>
                     ))}
                   </div>
                 </div>
@@ -304,30 +302,29 @@ export default function MemorialPadrao() {
                     const num   = factData.indexOf(fact) + 1
                     const stKey = fact.statusKey
                     return (
-                      <TiltWrapper key={fact.title} rotateAmplitude={8} scaleOnHover={1.03}>
-                        <div
-                          className={`${styles.factCard}
+                      <ParticleCard
+                        key={fact.title}
+                        className={`${styles.factCard}
                             ${stKey === 'controvertido' ? styles.fcContro  : ''}
                             ${stKey === 'incontroverso' ? styles.fcIncontro: ''}
-                            ${stKey === 'pendente'      ? styles.fcPend    : ''}`}
-                          onClick={() => setOpenFact(factData.indexOf(fact))}
-                        >
-                          <span className={styles.factNum}>{String(num).padStart(2, '0')}</span>
-                          <div className={`${styles.factStatus}
+                            ${stKey === 'pendente'      ? styles.fcPend    : ''} magic-bento-card`}
+                        onClick={() => setOpenFact(factData.indexOf(fact))}
+                      >
+                        <span className={styles.factNum}>{String(num).padStart(2, '0')}</span>
+                        <div className={`${styles.factStatus}
                             ${stKey === 'controvertido' ? styles.stContro  : ''}
                             ${stKey === 'incontroverso' ? styles.stIncontro: ''}
                             ${stKey === 'pendente'      ? styles.stPend    : ''}`}>
-                            {fact.status}
-                          </div>
-                          <p className={styles.factTitle}>{fact.title}</p>
-                          <p className={styles.factDesc}>{fact.desc}</p>
-                          <div className={styles.factTags}>
-                            {fact.docs.slice(0, 3).map((d, di) => (
-                              <span key={di} className={styles.factTag}>{d.l} · {d.name.split(' ').slice(0, 3).join(' ')}</span>
-                            ))}
-                          </div>
+                          {fact.status}
                         </div>
-                      </TiltWrapper>
+                        <p className={styles.factTitle}>{fact.title}</p>
+                        <p className={styles.factDesc}>{fact.desc}</p>
+                        <div className={styles.factTags}>
+                          {fact.docs.slice(0, 3).map((d, di) => (
+                            <span key={di} className={styles.factTag}>{d.l} · {d.name.split(' ').slice(0, 3).join(' ')}</span>
+                          ))}
+                        </div>
+                      </ParticleCard>
                     )
                   })}
                 </div>
@@ -340,22 +337,20 @@ export default function MemorialPadrao() {
                 <SectionHeader label="Provas e Documentos" count={`${allDocs.length} documentos`} />
                 <div className={styles.docsGrid}>
                   {allDocs.map((doc, i) => (
-                    <TiltWrapper key={i} rotateAmplitude={5} scaleOnHover={1.02}>
-                      <div className={styles.docCard}>
-                        <div className={`${styles.docIcon} ${styles[doc.icon as keyof typeof styles]}`}>{doc.l}</div>
-                        <div className={styles.docInfo}>
-                          <p className={styles.docName}>{doc.name}</p>
-                          <p className={styles.docMeta}>{doc.meta}</p>
-                          <p className={styles.docSource}>{doc.source}</p>
-                        </div>
-                        <span
-                          className={styles.docAction}
-                          style={(doc as any).url === '#' ? { color: '#c0b0a8', cursor: 'default' } : {}}
-                        >
-                          {(doc as any).url === '#' ? 'Pendente' : 'Abrir →'}
-                        </span>
+                    <ParticleCard key={i} className={`${styles.docCard} magic-bento-card`}>
+                      <div className={`${styles.docIcon} ${styles[doc.icon as keyof typeof styles]}`}>{doc.l}</div>
+                      <div className={styles.docInfo}>
+                        <p className={styles.docName}>{doc.name}</p>
+                        <p className={styles.docMeta}>{doc.meta}</p>
+                        <p className={styles.docSource}>{doc.source}</p>
                       </div>
-                    </TiltWrapper>
+                      <span
+                        className={styles.docAction}
+                        style={(doc as any).url === '#' ? { color: '#c0b0a8', cursor: 'default' } : {}}
+                      >
+                        {(doc as any).url === '#' ? 'Pendente' : 'Abrir →'}
+                      </span>
+                    </ParticleCard>
                   ))}
                 </div>
               </>
@@ -367,26 +362,24 @@ export default function MemorialPadrao() {
                 <SectionHeader label="Pontos Críticos" count={`${controversos.length} itens`} />
                 <div className={styles.criticosGrid}>
                   {controversos.map((fact, i) => (
-                    <TiltWrapper key={i} rotateAmplitude={8} scaleOnHover={1.03}>
-                      <div className={`${styles.criticoCard} ${fact.statusKey === 'pendente' ? styles.criticoPend : ''}`}>
-                        <div className={styles.criticoHeader}>
-                          <span className={`${styles.criticoStatus} ${fact.statusKey === 'pendente' ? styles.criticoStatusPend : ''}`}>
-                            {fact.status}
-                          </span>
-                          <span className={styles.criticoNum}>{String(factData.indexOf(fact) + 1).padStart(2, '0')}</span>
-                        </div>
-                        <p className={styles.criticoTitle}>{fact.title}</p>
-                        <p className={styles.criticoTese}>{fact.tese}</p>
-                        <div className={styles.criticoDocs}>
-                          {fact.docs.map((d, di) => (
-                            <span key={di} className={styles.criticoDoc}>
-                              <span className={`${styles.criticoDocIcon} ${styles[d.icon as keyof typeof styles]}`}>{d.l}</span>
-                              {d.name}
-                            </span>
-                          ))}
-                        </div>
+                    <ParticleCard key={i} className={`${styles.criticoCard} ${fact.statusKey === 'pendente' ? styles.criticoPend : ''} magic-bento-card`}>
+                      <span className={styles.criticoNum}>{String(factData.indexOf(fact) + 1).padStart(2, '0')}</span>
+                      <div className={styles.criticoHeader}>
+                        <span className={`${styles.criticoStatus} ${fact.statusKey === 'pendente' ? styles.criticoStatusPend : ''}`}>
+                          {fact.status}
+                        </span>
                       </div>
-                    </TiltWrapper>
+                      <p className={styles.criticoTitle}>{fact.title}</p>
+                      <p className={styles.criticoTese}>{fact.tese}</p>
+                      <div className={styles.criticoDocs}>
+                        {fact.docs.map((d, di) => (
+                          <span key={di} className={styles.criticoDoc}>
+                            <span className={`${styles.criticoDocIcon} ${styles[d.icon as keyof typeof styles]}`}>{d.l}</span>
+                            {d.name}
+                          </span>
+                        ))}
+                      </div>
+                    </ParticleCard>
                   ))}
                 </div>
               </>

@@ -1,0 +1,31 @@
+/* ── MAGIC BENTO PARTICLE CONTAINER ── */
+.mb-particle-container {
+  position: relative;
+}
+
+/* ── CARD GLOW EFFECT ── */
+.magic-bento-card {
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-intensity: 0;
+  --glow-radius: 300px;
+}
+
+.magic-bento-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+    rgba(138, 74, 241, calc(var(--glow-intensity) * 0.18)),
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── SECTION CONTAINER (for spotlight bounds detection) ── */
+.mb-bento-section {
+  position: relative;
+}
