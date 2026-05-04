@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { verificarSenha, autenticar, isAutenticado } from '../auth/auth'
 import LoadingScreen from '../components/LoadingScreen'
-import logoDraw from '../assets/logo-draw.svg'
+import logoDrawLight from '../assets/logo-draw-light.svg'
+import logoDrawDark from '../assets/logo-draw.svg'
 import styles from './Login.module.css'
 
 export default function Login() {
@@ -23,8 +24,8 @@ export default function Login() {
     e.preventDefault()
     setLoading(true)
     setErro(false)
-    setTimeout(() => {
-      if (verificarSenha(senha)) {
+    setTimeout(async () => {
+      if (await verificarSenha(senha)) {
         autenticar()
         setShowLoading(true)
         setTimeout(() => setLoadingExiting(true), 4600)
@@ -48,7 +49,7 @@ export default function Login() {
         <div className={styles.left}>
           <div className={styles.leftTop}>
             <div className={styles.brand}>
-              <img src={logoDraw} alt="Draw the Law" className={styles.brandLogoImg} />
+              <img src={logoDrawDark} alt="Draw the Law" className={styles.brandLogoImg} />
             </div>
             <h1 className={styles.leftTitle}>
               Memorial<br />Jurídico<br />Digital
@@ -56,11 +57,6 @@ export default function Login() {
             <p className={styles.leftSub}>
               Plataforma privada para acompanhamento estratégico de processos complexos.
             </p>
-            <div className={styles.leftDeco}>
-              <div className={`${styles.leftDecoBar} ${styles.leftDecoBarActive}`} />
-              <div className={`${styles.leftDecoBar} ${styles.leftDecoBarInactive}`} />
-              <div className={`${styles.leftDecoBar} ${styles.leftDecoBarInactive}`} />
-            </div>
           </div>
 
           <div className={styles.leftBottom}>
@@ -77,9 +73,7 @@ export default function Login() {
 
             <div className={styles.rightHeader}>
               <div className={styles.rightLogo}>
-                <div className={styles.rightLogoWrap}>
-                  <img src={logoDraw} alt="Draw the Law" className={styles.rightLogoImg} />
-                </div>
+                <img src={logoDrawLight} alt="Draw the Law" className={styles.rightLogoImg} />
               </div>
               <h2 className={styles.cardTitle}>Bem-vindo de volta</h2>
               <p className={styles.cardEyebrow}>Acesse sua conta para continuar</p>

@@ -37,7 +37,7 @@ function AppRoutes() {
 export default function App() {
   return (
     <BrowserRouter>
-      <ClickSpark sparkColor="#c85c0e" sparkCount={7} sparkRadius={24} sparkSize={7} duration={480} />
+      <ClickSpark sparkColor="#8b5cf6" sparkCount={7} sparkRadius={24} sparkSize={7} duration={480} />
       <AppRoutes />
     </BrowserRouter>
   )

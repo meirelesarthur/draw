@@ -1,6 +1,9 @@
 import styles from './Header.module.css'
 import setaLaranja from '../assets/seta-laranja.png'
 
+const pdfUrl = (filename: string) =>
+  new URL(`../assets/docs/${filename}`, import.meta.url).href
+
 export default function Header() {
   return (
     <header className={styles.header}>
@@ -12,7 +15,12 @@ export default function Header() {
         <p className={styles.subtitle}>MEMORIAIS DE RAQUEL E MARIANA</p>
       </div>
 
-      <div className={styles.testamentCard}>
+      <a
+        href={pdfUrl('Testamento 8.12.2017 - RAQUEL.pdf')}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={styles.testamentCard}
+      >
         <p className={styles.testamentTitle}>
           <strong>Testamento Público de<br />8/12/2017</strong>{' '}
           (beneficiando sua companheira <strong>RAQUEL</strong>)
@@ -22,7 +30,7 @@ export default function Header() {
           com a parte disponível dos bens e a nomeando como
           inventariante e <strong>testamenteira</strong>
         </p>
-      </div>
+      </a>
 
       <div className={styles.principleOuter}>
         <img src={setaLaranja} className={styles.principleArrow} alt="" />

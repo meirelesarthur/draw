@@ -65,9 +65,14 @@
 .row {
   display: grid;
   grid-template-columns: 1fr 18px 86px 18px 1fr;
-  align-items: start;
+  align-items: center;
   position: relative;
   z-index: 1;
+}
+
+/* Ghost rows (sem pill): a vertical line apenas passa por eles */
+.rowGhost {
+  /* sem mudanças no grid, apenas o pill fica vazio */
 }
 
 /* LEFT cell – ODETTE events, right-aligned */
@@ -88,12 +93,11 @@
   min-height: 1px;
 }
 
-/* Connector columns */
+/* ── Connector left AND right — linha reta marrom (igual nos dois lados) ── */
 .connLeft,
 .connRight {
   display: flex;
-  align-items: flex-start;
-  padding-top: 11px;
+  align-items: center;
   overflow: visible;
 }
 
@@ -105,11 +109,16 @@
   background: var(--color-brown);
 }
 
+/* (classe mantida para backward-compat, não usada no momento) */
+.connArrow {
+  display: none;
+}
+
 /* ── Year pill ── */
 .yearCell {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   position: relative;
   z-index: 2;
 }
@@ -122,27 +131,29 @@
   width: 100%;
   box-sizing: border-box;
   gap: 1px;
-  padding: 4px 6px;
-  border-radius: 3px;
-  border: 2px solid var(--color-brown-dark);
+  padding: 5px 8px;
+  border-radius: 4px;
+  border: 2px solid #6C5658;
   font-family: var(--font-roboto);
   font-weight: 700;
   font-size: 9.5px;
   text-align: center;
   white-space: nowrap;
   line-height: 1.3;
+  /* 2D flat shadow */
+  box-shadow: 3px 3px 0px #6C5658;
 }
 
 .pillBrown {
   background: var(--color-brown);
   color: var(--color-white);
-  border-color: var(--color-brown-dark);
+  border-color: #6C5658;
 }
 
 .pillDark {
   background: var(--color-text);
   color: var(--color-white);
-  border-color: var(--color-text);
+  border-color: #6C5658;
 }
 
 .pillSub {
@@ -152,7 +163,7 @@
   font-weight: 700;
 }
 
-/* ── Stacked cards (multiple cards in one cell, vertical) ── */
+/* ── Stacked cards (column) ── */
 .cardStack {
   display: flex;
   flex-direction: column;
@@ -161,17 +172,77 @@
   width: 100%;
 }
 
-/* ── Cards side by side in a row ── */
+/* ── Cards unificados em container retangular ── */
 .cardRow {
   display: flex;
   flex-direction: row;
-  gap: 8px;
-  align-items: flex-start;
+  align-items: stretch;
   justify-content: flex-end;
-  flex-wrap: wrap;
+  min-height: 98px;
+  background: var(--color-white);
+  border-radius: 7px;
+  border: 2px solid var(--color-brown);
+  box-shadow: 4px 8px 3px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  width: 100%;
 }
 
-/* ── Card with icon beside it ── */
+.leftCell .cardRow {
+  border-color: var(--color-brown);
+}
+
+.rightCell .cardRow {
+  border-color: var(--color-orange);
+}
+
+/* ── 2015: layout horizontal [highlight] ← seta ← [miniStack] ── */
+.highlightRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0;
+  width: 100%;
+}
+
+/* seta-laranja.png entre o highlight card e o miniStack */
+.highlightArrow {
+  height: 28px;
+  width: auto;
+  flex-shrink: 0;
+  /* A imagem aponta para esquerda (do mini-stack para o highlight) */
+}
+
+/* 2 cards empilhados verticalmente no 2015 (ODETTE ajuizou / MARIALDO ajuizou) */
+.miniStack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-shrink: 0;
+  align-items: flex-end;
+}
+
+/* ── Ghost row: bloco de 3 cards + seta vertical + card grande ── */
+.ghostBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  width: 100%;
+}
+
+/* seta-vertical.svg entre os 3 cards e o highlight grande */
+.verticalArrow {
+  width: 12px;
+  height: 74px;
+  object-fit: fill;
+  flex-shrink: 0;
+  /* Posicionado mais ao centro da linha de cards */
+  align-self: center;
+  margin-right: 30%;
+}
+
+/* ── Card with pulse icon ── */
 .cardWithIcon {
   display: flex;
   flex-direction: column;

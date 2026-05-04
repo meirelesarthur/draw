@@ -5,18 +5,23 @@ export interface DocLink { label: string; url: string }
 interface EventCardProps {
   family: 'odette' | 'raquel'
   highlight?: boolean
+  rowItem?: boolean
+  rowItemLast?: boolean
   docs?: DocLink[]
   children: React.ReactNode
 }
 
-export default function EventCard({ family, highlight = false, docs, children }: EventCardProps) {
+export default function EventCard({ family, highlight = false, rowItem = false, rowItemLast = false, docs, children }: EventCardProps) {
   return (
     <div
       className={[
         styles.card,
-        family === 'odette' ? styles.odette : styles.raquel,
+        // Only apply family border class when NOT in a row container
+        !rowItem && (family === 'odette' ? styles.odette : styles.raquel),
         highlight ? styles.highlight : '',
-      ].join(' ')}
+        rowItem ? styles.rowItem : '',
+        rowItem && rowItemLast ? styles.rowItemLast : '',
+      ].filter(Boolean).join(' ')}
     >
       {children}
       {docs && docs.length > 0 && (
@@ -31,7 +36,7 @@ export default function EventCard({ family, highlight = false, docs, children }:
               onClick={e => e.stopPropagation()}
             >
               <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M2 1h5l3 3v7H2V1z"/><path d="M7 1v3h3"/>
+                <path d="M2 1h5l3 3v7H2V1z" /><path d="M7 1v3h3" />
               </svg>
               {d.label}
             </a>

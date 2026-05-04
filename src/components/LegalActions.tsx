@@ -8,13 +8,8 @@ const pdfUrl = (filename: string) =>
   new URL(`../assets/docs/${filename}`, import.meta.url).href
 
 const URL_INVENTARIO       = pdfUrl('Inventário 1093482-39.2024.8.26.0100 - copia integral - 27.4.2026.pdf')
-const URL_INVENTARIO_DEC   = pdfUrl('Inventário - decisao substituicao inventariante dativo.pdf')
 const URL_REGISTRO_TEST    = pdfUrl('Registro Testamento Raquel - Inicial.pdf')
-const URL_REGISTRO_CONT    = pdfUrl('Registro Testamento Raquel - Contestação.pdf')
-const URL_REGISTRO_DEC     = pdfUrl('Registro Testamento Raquel - decisões.pdf')
 const URL_NULIDADE_TEST    = pdfUrl('Nulidade de Testamento - Inicial.pdf')
-const URL_NULIDADE_CONT    = pdfUrl('Nulidade de Testamento - Contestação.pdf')
-const URL_NULIDADE_PROVAS  = pdfUrl('Nulidade de Testamento - Especificação de provas das partes.pdf')
 
 function DocPill({ label, url }: { label: string; url: string }) {
   return (
@@ -77,7 +72,6 @@ export default function LegalActions() {
           </div>
           <div className={styles.docRow}>
             <DocPill label="Inventário — Cópia Integral 27.4.2026" url={URL_INVENTARIO} />
-            <DocPill label="Decisão — Substituição Inventariante Dativo" url={URL_INVENTARIO_DEC} />
           </div>
         </div>
 
@@ -123,8 +117,6 @@ export default function LegalActions() {
           </div>
           <div className={styles.docRow}>
             <DocPill label="Registro Testamento Raquel — Inicial" url={URL_REGISTRO_TEST} />
-            <DocPill label="Registro Testamento Raquel — Contestação" url={URL_REGISTRO_CONT} />
-            <DocPill label="Registro Testamento Raquel — Decisões" url={URL_REGISTRO_DEC} />
           </div>
         </div>
 
@@ -182,8 +174,6 @@ export default function LegalActions() {
           </div>
           <div className={styles.docRow}>
             <DocPill label="Nulidade de Testamento — Inicial" url={URL_NULIDADE_TEST} />
-            <DocPill label="Nulidade de Testamento — Contestação" url={URL_NULIDADE_CONT} />
-            <DocPill label="Nulidade de Testamento — Especificação de Provas" url={URL_NULIDADE_PROVAS} />
           </div>
         </div>
       </div>

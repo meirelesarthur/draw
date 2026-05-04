@@ -5,7 +5,7 @@ import { tlData, factData } from '../data/memorialPadraoData'
 import TimelineVertical from '../components/TimelineVertical'
 import CountUp from '../components/CountUp'
 import { ParticleCard, GlobalSpotlight } from '../components/MagicBento'
-import logoDraw from '../assets/logo-draw.svg'
+import logoDraw from '../assets/logo-draw-light.svg'
 import styles from './MemorialPadrao.module.css'
 
 type Filter = 'todos' | 'controvertido' | 'incontroverso' | 'pendente'
@@ -52,9 +52,7 @@ export default function MemorialPadrao() {
       <aside className={styles.sidebar}>
         <div className={styles.sidebarTop}>
           <div className={styles.sidebarBrand}>
-            <div className={styles.brandLogoWrap}>
-              <img src={logoDraw} alt="Draw the Law" className={styles.brandLogoImg} />
-            </div>
+            <img src={logoDraw} alt="Draw the Law" className={styles.brandLogoImg} />
           </div>
 
           <div className={styles.binder}>

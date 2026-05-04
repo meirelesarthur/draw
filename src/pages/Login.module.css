@@ -14,13 +14,14 @@
   display: flex;
   width: 960px;
   max-width: 100%;
-  min-height: 580px;
+  height: min(580px, calc(100vh - 32px));
   background: #fff;
   border-radius: 28px;
   box-shadow:
     0 4px 16px rgba(7, 20, 69, 0.06),
     0 24px 72px rgba(7, 20, 69, 0.14);
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   animation: cardEntrance var(--dur-slow) var(--ease-snap) both;
 }
 
@@ -100,20 +101,7 @@
   margin-bottom: 32px;
 }
 
-/* barra decorativa tipo progress */
-.leftDeco {
-  display: flex;
-  gap: 8px;
-}
 
-.leftDecoBar {
-  height: 4px;
-  flex: 1;
-  border-radius: 2px;
-}
-
-.leftDecoBarActive   { background: #8A4AF1; }
-.leftDecoBarInactive { background: rgba(255, 255, 255, 0.1); }
 
 /* bottom: legal */
 .leftBottom {
@@ -142,7 +130,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 52px 48px;
+  padding: 32px 48px;
+  overflow-y: auto;
 }
 
 .form {
@@ -162,16 +151,8 @@
   margin-bottom: 28px;
 }
 
-.rightLogoWrap {
-  background: #071445;
-  border-radius: 8px;
-  padding: 8px 14px;
-  display: inline-flex;
-  align-items: center;
-}
-
 .rightLogoImg {
-  width: 100px;
+  width: 120px;
   height: auto;
 }
 

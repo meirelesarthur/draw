@@ -28,20 +28,20 @@
   display: flex;
   flex-direction: column;
   padding: 28px 0 0;
-  overflow: hidden;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.sidebarTop::-webkit-scrollbar {
+  display: none;
 }
 
 /* Brand */
 .sidebarBrand {
   padding: 0 24px 24px;
-}
-
-.brandLogoWrap {
-  background: #071445;
-  border-radius: 8px;
-  padding: 8px 12px;
-  display: inline-flex;
-  align-items: center;
 }
 
 .brandLogoImg {

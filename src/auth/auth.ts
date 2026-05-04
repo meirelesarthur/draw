@@ -1,11 +1,12 @@
-// Senha da plataforma: nery2025
-// Para alterar: substitua os charCodes abaixo pelos do(s) caractere(s) da nova senha
-// Exemplo: 'A'=65, 'a'=97, '0'=48, '@'=64 — use String.fromCharCode(x).charCodeAt(0) no console
-const _P = String.fromCharCode(110, 101, 114, 121, 50, 48, 50, 53)
+const HASH = '5b834c3ad9542660ced48c3024e6c6f0abe7a1d9967c686095990129e8e4a583'
 const SESSION_KEY = 'dtl_v1'
 
-export function verificarSenha(input: string): boolean {
-  return input === _P
+export async function verificarSenha(input: string): Promise<boolean> {
+  const msgBuffer = new TextEncoder().encode(input)
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer)
+  const hashArray = Array.from(new Uint8Array(hashBuffer))
+  const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('')
+  return hashHex === HASH
 }
 
 export function autenticar(): void {

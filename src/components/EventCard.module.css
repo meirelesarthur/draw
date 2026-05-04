@@ -18,6 +18,7 @@
   border: 1px solid var(--color-brown);
 }
 
+
 .raquel {
   border: 1px solid var(--color-orange);
 }
@@ -26,6 +27,36 @@
   background: var(--color-peach);
   border: none;
   box-shadow: 4px 8px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* ── Inside a unified cardRow container ── */
+.card.rowItem {
+  flex: 1;
+  min-width: 0;
+  max-width: none;
+  border-radius: 0;
+  border: none;
+  /* Divisor lateral via inset shadow — cobre 100% da altura ignorando o padding */
+  box-shadow: inset -1px 0 0 rgba(108, 86, 88, 0.22);
+  background: transparent;
+  align-self: stretch;
+  /* Centraliza o conteúdo verticalmente */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 8px 12px;
+  gap: 4px;
+}
+
+.card.rowItemLast,
+.card.rowItem.rowItemLast {
+  box-shadow: none;
+}
+
+/* highlight inside row keeps peach bg */
+.card.rowItem.highlight {
+  background: var(--color-peach);
 }
 
 .card hr {
