@@ -4,8 +4,7 @@ const imgScroll = 'https://www.figma.com/api/mcp/asset/2be2ac46-d7f4-4209-b5f4-3
 const imgBookOpenText = 'https://www.figma.com/api/mcp/asset/57306c0f-6c02-431b-8e1e-9205684c389f'
 const imgReceiptX = 'https://www.figma.com/api/mcp/asset/184a2815-b1f8-46d0-b76e-1c10f82f77c8'
 
-const pdfUrl = (filename: string) =>
-  new URL(`../assets/docs/${filename}`, import.meta.url).href
+const pdfUrl = (filename: string) => `/docs/${filename}`
 
 const URL_INVENTARIO       = pdfUrl('Inventário 1093482-39.2024.8.26.0100 - copia integral - 27.4.2026.pdf')
 const URL_REGISTRO_TEST    = pdfUrl('Registro Testamento Raquel - Inicial.pdf')

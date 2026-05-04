@@ -9,7 +9,7 @@ import styles from './Memorial.module.css'
 type Tab = 'fluxograma' | 'documentos'
 type DocFilter = 'todos' | 'certidao' | 'peticao' | 'escritura' | 'decisao'
 
-const pdfUrl = (filename: string) => new URL(`../assets/docs/${filename}`, import.meta.url).href
+const pdfUrl = (filename: string) => `/docs/${filename}`
 
 interface Doc {
   id: number

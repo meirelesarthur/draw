@@ -5,8 +5,7 @@ import setaLaranja from '../assets/seta-laranja.png'
 const imgPulse = 'https://www.figma.com/api/mcp/asset/ec82c8bb-31a3-4dd3-a719-c80976f6409f'
 
 // ── DOCUMENT LINKS ────────────────────────────────────────────────────────────
-const pdfUrl = (filename: string) =>
-  new URL(`../assets/docs/${filename}`, import.meta.url).href
+const pdfUrl = (filename: string) => `/docs/${filename}`
 
 const D = {
   certidaoCasamento: {

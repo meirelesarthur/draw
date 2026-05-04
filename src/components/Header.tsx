@@ -1,8 +1,7 @@
 import styles from './Header.module.css'
 import setaLaranja from '../assets/seta-laranja.png'
 
-const pdfUrl = (filename: string) =>
-  new URL(`../assets/docs/${filename}`, import.meta.url).href
+const pdfUrl = (filename: string) => `/docs/${filename}`
 
 export default function Header() {
   return (
