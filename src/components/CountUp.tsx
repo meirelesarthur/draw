@@ -45,7 +45,7 @@ export default function CountUp({
           const t0 = performance.now()
           function tick(now: number) {
             const progress = Math.min((now - t0) / ms, 1)
-            el.textContent = String(Math.round(from + (to - from) * easeOutExpo(progress)))
+            el!.textContent = String(Math.round(from + (to - from) * easeOutExpo(progress)))
             if (progress < 1) rafId = requestAnimationFrame(tick)
           }
           rafId = requestAnimationFrame(tick)
