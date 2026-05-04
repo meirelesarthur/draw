@@ -1,0 +1,54 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  overflow: hidden;
+  animation: loadFadeIn 0.35s var(--ease-out) both;
+}
+
+.exiting {
+  animation: loadFadeOut 0.4s var(--ease-in) both;
+}
+
+/* ── RINGS CONTAINER ── */
+.rings {
+  position: relative;
+  width: max(100vw, 100vh);
+  height: max(100vw, 100vh);
+  flex-shrink: 0;
+}
+
+/* ── CENTERED LABEL ── */
+.label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.labelText {
+  font-family: var(--font-raleway);
+  font-weight: 800;
+  font-size: clamp(22px, 3.2vmin, 42px);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #c85c0e;
+  text-align: center;
+}
+
+/* ── KEYFRAMES ── */
+@keyframes loadFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes loadFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { verificarSenha, autenticar, isAutenticado } from '../auth/auth'
+import LoadingScreen from '../components/LoadingScreen'
 import styles from './Login.module.css'
 
 export default function Login() {
@@ -8,7 +9,9 @@ export default function Login() {
   const [erro, setErro] = useState(false)
   const [loading, setLoading] = useState(false)
   const [showPass, setShowPass] = useState(false)
-  const [errKey, setErrKey] = useState(0) // força re-mount da animação de shake
+  const [errKey, setErrKey] = useState(0)
+  const [showLoading, setShowLoading] = useState(false)
+  const [loadingExiting, setLoadingExiting] = useState(false)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -22,7 +25,9 @@ export default function Login() {
     setTimeout(() => {
       if (verificarSenha(senha)) {
         autenticar()
-        navigate('/', { replace: true })
+        setShowLoading(true)
+        setTimeout(() => setLoadingExiting(true), 4600)
+        setTimeout(() => navigate('/', { replace: true }), 5000)
       } else {
         setErro(true)
         setErrKey(k => k + 1)
@@ -31,6 +36,8 @@ export default function Login() {
       }
     }, 600)
   }
+
+  if (showLoading) return <LoadingScreen exiting={loadingExiting} />
 
   return (
     <div className={styles.root}>

@@ -4,6 +4,7 @@ import { sair } from '../auth/auth'
 import { tlData, factData } from '../data/memorialPadraoData'
 import TimelineVertical from '../components/TimelineVertical'
 import CountUp from '../components/CountUp'
+import TiltWrapper from '../components/TiltWrapper'
 import styles from './MemorialPadrao.module.css'
 
 type Filter = 'todos' | 'controvertido' | 'incontroverso' | 'pendente'
@@ -155,10 +156,12 @@ export default function MemorialPadrao() {
                     { label: 'Dano central',         value: 'Cancelamento de 3 contratos comerciais + inscrição indevida no SERASA por 7 meses' },
                     { label: 'Fundamento legal',     value: 'CC art. 422 (boa-fé), art. 476 (exceptio), art. 403 (nexo causal), Súmulas STJ 227 e 385' },
                   ].map(r => (
-                    <div key={r.label} className={styles.resumoCard}>
-                      <span className={styles.resumoCardLabel}>{r.label}</span>
-                      <p className={styles.resumoCardValue}>{r.value}</p>
-                    </div>
+                    <TiltWrapper key={r.label} rotateAmplitude={6} scaleOnHover={1.03}>
+                      <div className={styles.resumoCard}>
+                        <span className={styles.resumoCardLabel}>{r.label}</span>
+                        <p className={styles.resumoCardValue}>{r.value}</p>
+                      </div>
+                    </TiltWrapper>
                   ))}
                 </div>
 
@@ -238,24 +241,26 @@ export default function MemorialPadrao() {
                   <SubHeader label="Pontos Críticos" action="Ver tudo" onAction={() => goTo('criticos')} />
                   <div className={styles.criticosGrid}>
                     {controversos.map((fact, i) => (
-                      <div key={i} className={`${styles.criticoCard} ${fact.statusKey === 'pendente' ? styles.criticoPend : ''}`}>
-                        <div className={styles.criticoHeader}>
-                          <span className={`${styles.criticoStatus} ${fact.statusKey === 'pendente' ? styles.criticoStatusPend : ''}`}>
-                            {fact.status}
-                          </span>
-                          <span className={styles.criticoNum}>{String(factData.indexOf(fact) + 1).padStart(2, '0')}</span>
-                        </div>
-                        <p className={styles.criticoTitle}>{fact.title}</p>
-                        <p className={styles.criticoTese}>{fact.tese}</p>
-                        <div className={styles.criticoDocs}>
-                          {fact.docs.map((d, di) => (
-                            <span key={di} className={styles.criticoDoc}>
-                              <span className={`${styles.criticoDocIcon} ${styles[d.icon as keyof typeof styles]}`}>{d.l}</span>
-                              {d.name}
+                      <TiltWrapper key={i} rotateAmplitude={8} scaleOnHover={1.03}>
+                        <div className={`${styles.criticoCard} ${fact.statusKey === 'pendente' ? styles.criticoPend : ''}`}>
+                          <div className={styles.criticoHeader}>
+                            <span className={`${styles.criticoStatus} ${fact.statusKey === 'pendente' ? styles.criticoStatusPend : ''}`}>
+                              {fact.status}
                             </span>
-                          ))}
+                            <span className={styles.criticoNum}>{String(factData.indexOf(fact) + 1).padStart(2, '0')}</span>
+                          </div>
+                          <p className={styles.criticoTitle}>{fact.title}</p>
+                          <p className={styles.criticoTese}>{fact.tese}</p>
+                          <div className={styles.criticoDocs}>
+                            {fact.docs.map((d, di) => (
+                              <span key={di} className={styles.criticoDoc}>
+                                <span className={`${styles.criticoDocIcon} ${styles[d.icon as keyof typeof styles]}`}>{d.l}</span>
+                                {d.name}
+                              </span>
+                            ))}
+                          </div>
                         </div>
-                      </div>
+                      </TiltWrapper>
                     ))}
                   </div>
                 </div>
@@ -299,29 +304,30 @@ export default function MemorialPadrao() {
                     const num   = factData.indexOf(fact) + 1
                     const stKey = fact.statusKey
                     return (
-                      <div
-                        key={fact.title}
-                        className={`${styles.factCard}
-                          ${stKey === 'controvertido' ? styles.fcContro  : ''}
-                          ${stKey === 'incontroverso' ? styles.fcIncontro: ''}
-                          ${stKey === 'pendente'      ? styles.fcPend    : ''}`}
-                        onClick={() => setOpenFact(factData.indexOf(fact))}
-                      >
-                        <span className={styles.factNum}>{String(num).padStart(2, '0')}</span>
-                        <div className={`${styles.factStatus}
-                          ${stKey === 'controvertido' ? styles.stContro  : ''}
-                          ${stKey === 'incontroverso' ? styles.stIncontro: ''}
-                          ${stKey === 'pendente'      ? styles.stPend    : ''}`}>
-                          {fact.status}
+                      <TiltWrapper key={fact.title} rotateAmplitude={8} scaleOnHover={1.03}>
+                        <div
+                          className={`${styles.factCard}
+                            ${stKey === 'controvertido' ? styles.fcContro  : ''}
+                            ${stKey === 'incontroverso' ? styles.fcIncontro: ''}
+                            ${stKey === 'pendente'      ? styles.fcPend    : ''}`}
+                          onClick={() => setOpenFact(factData.indexOf(fact))}
+                        >
+                          <span className={styles.factNum}>{String(num).padStart(2, '0')}</span>
+                          <div className={`${styles.factStatus}
+                            ${stKey === 'controvertido' ? styles.stContro  : ''}
+                            ${stKey === 'incontroverso' ? styles.stIncontro: ''}
+                            ${stKey === 'pendente'      ? styles.stPend    : ''}`}>
+                            {fact.status}
+                          </div>
+                          <p className={styles.factTitle}>{fact.title}</p>
+                          <p className={styles.factDesc}>{fact.desc}</p>
+                          <div className={styles.factTags}>
+                            {fact.docs.slice(0, 3).map((d, di) => (
+                              <span key={di} className={styles.factTag}>{d.l} · {d.name.split(' ').slice(0, 3).join(' ')}</span>
+                            ))}
+                          </div>
                         </div>
-                        <p className={styles.factTitle}>{fact.title}</p>
-                        <p className={styles.factDesc}>{fact.desc}</p>
-                        <div className={styles.factTags}>
-                          {fact.docs.slice(0, 3).map((d, di) => (
-                            <span key={di} className={styles.factTag}>{d.l} · {d.name.split(' ').slice(0, 3).join(' ')}</span>
-                          ))}
-                        </div>
-                      </div>
+                      </TiltWrapper>
                     )
                   })}
                 </div>
@@ -334,20 +340,22 @@ export default function MemorialPadrao() {
                 <SectionHeader label="Provas e Documentos" count={`${allDocs.length} documentos`} />
                 <div className={styles.docsGrid}>
                   {allDocs.map((doc, i) => (
-                    <div key={i} className={styles.docCard}>
-                      <div className={`${styles.docIcon} ${styles[doc.icon as keyof typeof styles]}`}>{doc.l}</div>
-                      <div className={styles.docInfo}>
-                        <p className={styles.docName}>{doc.name}</p>
-                        <p className={styles.docMeta}>{doc.meta}</p>
-                        <p className={styles.docSource}>{doc.source}</p>
+                    <TiltWrapper key={i} rotateAmplitude={5} scaleOnHover={1.02}>
+                      <div className={styles.docCard}>
+                        <div className={`${styles.docIcon} ${styles[doc.icon as keyof typeof styles]}`}>{doc.l}</div>
+                        <div className={styles.docInfo}>
+                          <p className={styles.docName}>{doc.name}</p>
+                          <p className={styles.docMeta}>{doc.meta}</p>
+                          <p className={styles.docSource}>{doc.source}</p>
+                        </div>
+                        <span
+                          className={styles.docAction}
+                          style={(doc as any).url === '#' ? { color: '#c0b0a8', cursor: 'default' } : {}}
+                        >
+                          {(doc as any).url === '#' ? 'Pendente' : 'Abrir →'}
+                        </span>
                       </div>
-                      <span
-                        className={styles.docAction}
-                        style={(doc as any).url === '#' ? { color: '#c0b0a8', cursor: 'default' } : {}}
-                      >
-                        {(doc as any).url === '#' ? 'Pendente' : 'Abrir →'}
-                      </span>
-                    </div>
+                    </TiltWrapper>
                   ))}
                 </div>
               </>
@@ -359,24 +367,26 @@ export default function MemorialPadrao() {
                 <SectionHeader label="Pontos Críticos" count={`${controversos.length} itens`} />
                 <div className={styles.criticosGrid}>
                   {controversos.map((fact, i) => (
-                    <div key={i} className={`${styles.criticoCard} ${fact.statusKey === 'pendente' ? styles.criticoPend : ''}`}>
-                      <div className={styles.criticoHeader}>
-                        <span className={`${styles.criticoStatus} ${fact.statusKey === 'pendente' ? styles.criticoStatusPend : ''}`}>
-                          {fact.status}
-                        </span>
-                        <span className={styles.criticoNum}>{String(factData.indexOf(fact) + 1).padStart(2, '0')}</span>
-                      </div>
-                      <p className={styles.criticoTitle}>{fact.title}</p>
-                      <p className={styles.criticoTese}>{fact.tese}</p>
-                      <div className={styles.criticoDocs}>
-                        {fact.docs.map((d, di) => (
-                          <span key={di} className={styles.criticoDoc}>
-                            <span className={`${styles.criticoDocIcon} ${styles[d.icon as keyof typeof styles]}`}>{d.l}</span>
-                            {d.name}
+                    <TiltWrapper key={i} rotateAmplitude={8} scaleOnHover={1.03}>
+                      <div className={`${styles.criticoCard} ${fact.statusKey === 'pendente' ? styles.criticoPend : ''}`}>
+                        <div className={styles.criticoHeader}>
+                          <span className={`${styles.criticoStatus} ${fact.statusKey === 'pendente' ? styles.criticoStatusPend : ''}`}>
+                            {fact.status}
                           </span>
-                        ))}
+                          <span className={styles.criticoNum}>{String(factData.indexOf(fact) + 1).padStart(2, '0')}</span>
+                        </div>
+                        <p className={styles.criticoTitle}>{fact.title}</p>
+                        <p className={styles.criticoTese}>{fact.tese}</p>
+                        <div className={styles.criticoDocs}>
+                          {fact.docs.map((d, di) => (
+                            <span key={di} className={styles.criticoDoc}>
+                              <span className={`${styles.criticoDocIcon} ${styles[d.icon as keyof typeof styles]}`}>{d.l}</span>
+                              {d.name}
+                            </span>
+                          ))}
+                        </div>
                       </div>
-                    </div>
+                    </TiltWrapper>
                   ))}
                 </div>
               </>

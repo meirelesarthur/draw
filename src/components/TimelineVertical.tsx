@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { TlEvent } from '../data/memorialPadraoData'
+import TiltWrapper from './TiltWrapper'
 import styles from './TimelineVertical.module.css'
 
 interface Props {
@@ -83,19 +84,21 @@ export default function TimelineVertical({ items }: Props) {
                   {item.docs.length > 0 && (
                     <div className={styles.docs}>
                       {item.docs.map((doc, di) => (
-                        <div key={di} className={styles.doc}>
-                          <div className={`${styles.docIcon} ${styles[doc.icon as keyof typeof styles]}`}>
-                            {doc.l}
+                        <TiltWrapper key={di} rotateAmplitude={6} scaleOnHover={1.03}>
+                          <div className={styles.doc}>
+                            <div className={`${styles.docIcon} ${styles[doc.icon as keyof typeof styles]}`}>
+                              {doc.l}
+                            </div>
+                            <div className={styles.docInfo}>
+                              <p className={styles.docName}>{doc.name}</p>
+                              <p className={styles.docMeta}>{doc.meta}</p>
+                            </div>
+                            {doc.url !== '#'
+                              ? <a href={doc.url} target="_blank" rel="noopener noreferrer" className={styles.docLink}>Abrir →</a>
+                              : <span className={styles.docLinkDisabled}>Pendente</span>
+                            }
                           </div>
-                          <div className={styles.docInfo}>
-                            <p className={styles.docName}>{doc.name}</p>
-                            <p className={styles.docMeta}>{doc.meta}</p>
-                          </div>
-                          {doc.url !== '#'
-                            ? <a href={doc.url} target="_blank" rel="noopener noreferrer" className={styles.docLink}>Abrir →</a>
-                            : <span className={styles.docLinkDisabled}>Pendente</span>
-                          }
-                        </div>
+                        </TiltWrapper>
                       ))}
                     </div>
                   )}

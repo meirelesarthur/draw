@@ -138,7 +138,9 @@
   border-bottom: 2px solid var(--color-gray-light);
 }
 
-.legalSection {}
+.legalSection {
+  padding: 0 48px;
+}
 
 /* ── DOCUMENTOS ── */
 .docsMain {
@@ -211,24 +213,33 @@
 }
 
 .docsFilt {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-family: var(--font-inter);
   font-size: 12px;
   font-weight: 600;
-  color: #8a7a70;
+  color: #6a5a50;
   background: #fff;
-  border: 1.5px solid #e4deda;
-  border-radius: 8px;
-  padding: 6px 14px;
+  border: 1.5px solid rgba(0,0,0,0.1);
+  border-radius: 999px;
+  padding: 0 0 0 16px;
+  height: 26px;
   cursor: pointer;
-  transition: all 0.15s;
+  transition:
+    background    var(--dur-fast) var(--ease-out),
+    border-color  var(--dur-fast) var(--ease-out),
+    color         var(--dur-fast) var(--ease-out),
+    transform     var(--dur-micro) var(--ease-out);
 }
 
 .docsFilt:hover {
   border-color: #c85c0e;
   color: #c85c0e;
+}
+
+.docsFilt:active {
+  transform: scale(0.97);
 }
 
 .docsFiltActive {
@@ -238,14 +249,19 @@
 }
 
 .docsFiltCount {
-  background: rgba(0,0,0,0.08);
-  border-radius: 9px;
-  padding: 1px 6px;
-  font-size: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  background: rgba(0,0,0,0.1);
+  border-radius: 999px;
+  padding: 0 16px;
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .docsFiltActive .docsFiltCount {
-  background: rgba(255,255,255,0.22);
+  background: rgba(0,0,0,0.2);
 }
 
 /* Table */

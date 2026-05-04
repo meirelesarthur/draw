@@ -1,8 +1,10 @@
 .root {
-  min-height: 100vh;
-  background: #f7f4f2;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  background: #f7f4f2;
+  overflow: hidden;
 }
 
 .rootLeaving {
@@ -10,255 +12,129 @@
   pointer-events: none;
 }
 
-/* ── NAV ── */
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 48px;
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  background: #fff;
-  animation: fadeDown var(--dur-normal) var(--ease-snap) both;
-}
-
-.navBrand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.navMark {
-  font-family: var(--font-raleway);
-  font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  color: #c85c0e;
-  background: rgba(200, 92, 14, 0.1);
-  padding: 4px 9px;
-  border-radius: 4px;
-}
-
-.navName {
-  font-family: var(--font-raleway);
-  font-size: 13px;
-  font-weight: 600;
-  color: #555;
-}
-
-.navSair {
-  font-family: var(--font-inter);
-  font-size: 12px;
-  font-weight: 600;
-  color: #888;
-  background: none;
-  border: 1px solid #e0dbd8;
-  border-radius: 6px;
-  padding: 6px 14px;
-  cursor: pointer;
-  transition:
-    color        var(--dur-fast) var(--ease-out),
-    border-color var(--dur-fast) var(--ease-out);
-}
-
-.navSair:hover {
-  color: #c85c0e;
-  border-color: #c85c0e;
-}
-
-/* ── MAIN ── */
-.main {
+/* ── OPTION BUTTON (outer shell — holds rotating ::before) ── */
+.option {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 48px;
-}
-
-/* ── GREETING ── */
-.greeting {
-  text-align: center;
-  margin-bottom: 56px;
-  animation: fadeUp var(--dur-slow) var(--ease-snap) 80ms both;
-}
-
-.greetingLabel {
-  font-family: var(--font-inter);
-  font-size: 16px;
-  color: #888;
-  margin-bottom: 10px;
-}
-
-.greetingTitle {
-  font-family: var(--font-raleway);
-  font-weight: 700;
-  font-size: 44px;
-  line-height: 1.1;
-  color: #1a1008;
-}
-
-/* ── CARDS ── */
-.cards {
-  display: flex;
-  gap: 24px;
-  width: 100%;
-  max-width: 880px;
-  margin-bottom: 56px;
-}
-
-/* Staggered entrance */
-.cards > *:nth-child(1) { animation: cardEntrance var(--dur-slow) var(--ease-snap) 160ms both; }
-.cards > *:nth-child(2) { animation: cardEntrance var(--dur-slow) var(--ease-snap) 240ms both; }
-
-.card {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background: #fff;
-  border: 1.5px solid #e8e2de;
-  border-radius: 20px;
+  height: 100%;
   position: relative;
   overflow: hidden;
-  transition:
-    border-color var(--dur-fast) var(--ease-out),
-    box-shadow   var(--dur-normal) var(--ease-out),
-    transform    var(--dur-fast) var(--ease-out);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-  will-change: transform;
-}
-
-/* Inner button fills the card */
-.cardInner {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0;
-  padding: 40px 36px 32px;
-  background: none;
-  border: none;
-  text-align: left;
-  width: 100%;
-  flex: 1;
   cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+  display: block;
+  transition:
+    border-radius 0.52s cubic-bezier(0.23, 1, 0.32, 1),
+    border-color  0.52s cubic-bezier(0.23, 1, 0.32, 1),
+    border-width  0.52s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.card::before {
+/* Rotating gradient stripe — invisible by default */
+.option::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
+  left: 50%;
+  top: 50%;
+  height: 200%;
+  width: 200%;
+  border-radius: 20%;
   opacity: 0;
-  transition: opacity var(--dur-fast) var(--ease-out);
+  animation: hubBorderRotate 2.4s linear infinite paused;
+  transition:
+    opacity 0.52s cubic-bezier(0.23, 1, 0.32, 1),
+    width   0.88s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 0;
 }
 
-.cardPersonalizado::before {
-  background: #c85c0e;
-}
+.optionPersonalizado::before { background: #783508; }
+.optionPadrao::before        { background: #442C99; }
 
-.cardPadrao::before {
-  background: linear-gradient(90deg, #BD48D0, #724AFF);
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 48px rgba(0,0,0,0.12);
-}
-
-.card:active {
-  transform: translateY(-1px) scale(0.995);
-  transition-duration: var(--dur-micro);
-}
-
-.card:hover::before {
+.option:hover::before {
   opacity: 1;
+  animation-play-state: running;
+  width: 25%;
 }
 
-.cardPersonalizado:hover {
-  border-color: #c85c0e;
-}
-
-.cardPadrao:hover {
-  border-color: #724AFF;
-}
-
-.cardIcon {
-  margin-bottom: 28px;
-  width: 64px;
-  height: 64px;
-  border-radius: 14px;
+/* ── INNER CONTENT (covers the ::before except at edges) ── */
+.optionInner {
+  position: absolute;
+  inset: 3px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
   background: #f7f4f2;
+  border-radius: 0;
+  transition:
+    background    0.48s cubic-bezier(0.23, 1, 0.32, 1),
+    color         0.48s cubic-bezier(0.23, 1, 0.32, 1),
+    border-radius 0.52s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.optionPersonalizado {
+  border-right: none;
+  animation: cardEntrance var(--dur-slow) var(--ease-snap) 160ms both;
+}
+
+.optionPersonalizado .optionInner { color: #c85c0e; }
+
+.optionPadrao {
+  animation: cardEntrance var(--dur-slow) var(--ease-snap) 240ms both;
+}
+
+.optionPadrao .optionInner { color: #724AFF; }
+
+.optionPersonalizado:hover {
+  border-color: #c85c0e;
+  border-width: 3px;
+  border-radius: 32px;
+}
+.optionPersonalizado:hover .optionInner {
+  background: #c85c0e;
+  color: #fff;
+  border-radius: 29px;
+}
+
+.optionPadrao:hover {
+  border-color: #724AFF;
+  border-width: 3px;
+  border-radius: 32px;
+}
+.optionPadrao:hover .optionInner {
+  background: #724AFF;
+  color: #fff;
+  border-radius: 29px;
+}
+
+/* ── CONTENT ELEMENTS ── */
+.optionIcon {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background var(--dur-fast) var(--ease-out);
 }
 
-.cardPersonalizado:hover .cardIcon {
-  background: rgba(200, 92, 14, 0.08);
-}
-
-.cardPadrao:hover .cardIcon {
-  background: rgba(114, 74, 255, 0.06);
-}
-
-.cardContent {
-  flex: 1;
-}
-
-.cardEyebrow {
-  display: block;
+.optionLabel {
   font-family: var(--font-inter);
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #c85c0e;
-  margin-bottom: 8px;
+  opacity: 0.6;
 }
 
-.cardEyebrowPadrao {
-  color: #724AFF;
-}
-
-.cardTitle {
+.optionTitle {
   font-family: var(--font-raleway);
   font-weight: 700;
-  font-size: 24px;
-  color: #1a1008;
-  margin-bottom: 12px;
+  font-size: 28px;
+  color: inherit;
   line-height: 1.2;
 }
 
-.cardDesc {
-  font-family: var(--font-inter);
-  font-size: 13px;
-  line-height: 1.7;
-  color: #888;
-}
-
-.cardArrow {
-  margin-top: 28px;
-  font-size: 20px;
-  color: #c85c0e;
-  font-weight: 300;
-  transition: transform var(--dur-fast) var(--ease-out);
-}
-
-.cardArrowPadrao {
-  color: #724AFF;
-}
-
-.card:hover .cardArrow {
-  transform: translateX(6px);
-}
-
-/* ── FOOTER ── */
-.footer {
-  font-family: var(--font-inter);
-  font-size: 11px;
-  color: #bbb;
-  text-align: center;
-  animation: fadeIn var(--dur-xslow) var(--ease-out) 400ms both;
+/* ── KEYFRAMES ── */
+@keyframes hubBorderRotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
 }

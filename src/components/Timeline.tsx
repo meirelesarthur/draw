@@ -3,43 +3,66 @@ import EventCard from './EventCard'
 
 const imgPulse = 'https://www.figma.com/api/mcp/asset/ec82c8bb-31a3-4dd3-a719-c80976f6409f'
 
-// ── DOCUMENT LINKS (extraídos do PDF RELACAO_LINKS) ─────────────────────────
+// ── DOCUMENT LINKS (arquivos locais) ─────────────────────────────────────────
+const pdfUrl = (filename: string) =>
+  new URL(`../assets/docs/${filename}`, import.meta.url).href
+
 const D = {
   certidaoCasamento: {
     label: 'Certidão Casamento e Divórcio Odette',
-    url: 'https://www.dropbox.com/scl/fo/xd74363efm8njaaqkdw13/AOuMCWhVak7F0meC3ZwPGhA/Certid%C3%A3o%20Casamento%20e%20Divorcio%20Odette.pdf?rlkey=9zurinrhm1asw3x0hovf7916d&st=glvzxfwv&dl=0',
+    url: pdfUrl('Certidão Casamento e Divorcio Odette.pdf'),
   },
   sentencaInterdicao: {
     label: 'Sentença Interdição',
-    url: 'https://www.dropbox.com/scl/fo/xd74363efm8njaaqkdw13/AAeCETfJGELYnla2TJrCsvY/Senten%C3%A7a%20interdi%C3%A7%C3%A3o.pdf?rlkey=9zurinrhm1asw3x0hovf7916d&st=2wzssqzp&dl=0',
+    url: pdfUrl('Sentença interdição.pdf'),
   },
   sentencaCuratela: {
     label: 'Sentença Curatela',
-    url: 'https://www.dropbox.com/scl/fo/xd74363efm8njaaqkdw13/ALoWcHy-PVsBjxsmSERixNQ/senten%C3%A7a%20curatela%20(1).pdf?rlkey=9zurinrhm1asw3x0hovf7916d&st=n7bqxjkw&dl=0',
+    url: pdfUrl('sentença curatela (1).pdf'),
   },
   acordaoInterdicao: {
     label: 'Acórdão — Sentença Interdição',
-    url: 'https://www.dropbox.com/scl/fo/xd74363efm8njaaqkdw13/AH3AIMHPZQvZilKespB7pE/Acordao%20Senten%C3%A7a%20interdi%C3%A7%C3%A3o.pdf?rlkey=9zurinrhm1asw3x0hovf7916d&st=ppc1pjce&dl=0',
+    url: pdfUrl('Acordao Sentença interdição.pdf'),
   },
   testamentoOdette: {
     label: 'Testamento e Revogação 9.10.2017',
-    url: 'https://www.dropbox.com/scl/fo/xd74363efm8njaaqkdw13/ADUvB7rCqX9K_gCzy5uoJB4/Testamento%20e%20Revogacao%20Testamento%209.10.2017%20Odette.pdf?rlkey=9zurinrhm1asw3x0hovf7916d&st=tlgj22rd&dl=0',
+    url: pdfUrl('Testamento e Revogacao Testamento 9.10.2017 Odette.pdf'),
   },
   testamentoRaquel: {
     label: 'Testamento 8.12.2017 — RAQUEL',
-    url: 'https://www.dropbox.com/scl/fo/xd74363efm8njaaqkdw13/AEx8KoQKkqMJ7YX88vqsVMQ/Testamento%208.12.2017%20-%20RAQUEL.pdf?rlkey=9zurinrhm1asw3x0hovf7916d&st=itzjxygy&dl=0',
+    url: pdfUrl('Testamento 8.12.2017 - RAQUEL.pdf'),
   },
   partilhaOdette: {
     label: 'Partilha Odette',
-    url: 'https://www.dropbox.com/scl/fo/xd74363efm8njaaqkdw13/AAVUk8Ti7b1eiibZBiX4dgo/Partilha%20Odette.pdf?rlkey=9zurinrhm1asw3x0hovf7916d&st=417zvgf2&dl=0',
+    url: pdfUrl('Partilha Odette.pdf'),
   },
   escrituraUniao: {
     label: 'Escritura União Estável — Raquel',
-    url: 'https://www.dropbox.com/scl/fo/xd74363efm8njaaqkdw13/ACUxXzhrWrjxL165vCP93ZM/Escritura%20Uniao%20Estavel%20Raquel.pdf?rlkey=9zurinrhm1asw3x0hovf7916d&st=n9sbyu81&dl=0',
+    url: pdfUrl('Escritura Uniao Estavel Raquel.pdf'),
   },
   sobrepartilhaOdette: {
     label: 'Sobrepartilha Odette',
-    url: 'https://www.dropbox.com/scl/fo/xd74363efm8njaaqkdw13/AL1xiQd8vI1wRHrSFw-PwNE/Sobrepartilha%20Odette.pdf?rlkey=9zurinrhm1asw3x0hovf7916d&st=d4jxu8le&dl=0',
+    url: pdfUrl('Sobrepartilha Odette.pdf'),
+  },
+  certidaoObito: {
+    label: 'Certidão de Óbito — Marialdo',
+    url: pdfUrl('Certidão Óbito Marialdo.pdf'),
+  },
+  laudoMedico: {
+    label: 'Laudo Médico — Dr. Guido Arturo Palomba',
+    url: pdfUrl('Laudo Médico Dr. Guido Arturo Palomba_organized.pdf'),
+  },
+  sentencaLevantamento: {
+    label: 'Sentença Levantamento de Interdição',
+    url: pdfUrl('Sentença levantamento interdição.pdf'),
+  },
+  diretrizesVontade: {
+    label: 'Diretrizes de Vontade',
+    url: pdfUrl('Diretrizes de vontade.pdf'),
+  },
+  escritura2019: {
+    label: 'Escritura Pública 24.7.2019',
+    url: pdfUrl('Escritura 24.7.2019.pdf'),
   },
 }
 
@@ -102,7 +125,7 @@ const rows: RowData[] = [
     odette: (
       <div className={styles.cardStack}>
         <div className={styles.cardRow}>
-          <EventCard family="odette" highlight docs={[D.acordaoInterdicao]}>
+          <EventCard family="odette" highlight docs={[D.acordaoInterdicao, D.laudoMedico, D.diretrizesVontade]}>
             <p>
               MARIALDO <strong>não concordou com o pedido de curatela</strong> e se opôs
               à interdição, mas indicou que, caso deferida,{' '}
@@ -116,7 +139,7 @@ const rows: RowData[] = [
           </EventCard>
         </div>
         <div className={styles.cardRow}>
-          <EventCard family="odette" highlight docs={[D.acordaoInterdicao]}>
+          <EventCard family="odette" highlight docs={[D.acordaoInterdicao, D.sentencaLevantamento]}>
             <p>
               Diante da melhora significativa de seu estado de saúde,{' '}
               <strong>o juízo</strong> da interdição <strong>reconheceu</strong> que a
@@ -169,6 +192,14 @@ const rows: RowData[] = [
     ),
   },
   {
+    year: '2019',
+    odette: (
+      <EventCard family="odette" docs={[D.escritura2019]}>
+        <p>Lavrada escritura pública em 24/07/2019</p>
+      </EventCard>
+    ),
+  },
+  {
     year: '2020',
     odette: (
       <div className={styles.cardWithIcon}>
@@ -203,7 +234,7 @@ const rows: RowData[] = [
     subLabel: 'Falecimento',
     dark: true,
     raquel: (
-      <EventCard family="raquel">
+      <EventCard family="raquel" docs={[D.certidaoObito]}>
         <p>MARIALDO faleceu em Joinville-SC ao lado de sua companheira RAQUEL</p>
       </EventCard>
     ),
