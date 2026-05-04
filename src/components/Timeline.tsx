@@ -5,42 +5,41 @@ import setaLaranja from '../assets/seta-laranja.png'
 const imgPulse = 'https://www.figma.com/api/mcp/asset/ec82c8bb-31a3-4dd3-a719-c80976f6409f'
 
 // ── DOCUMENT LINKS ────────────────────────────────────────────────────────────
-const pdfUrl = (filename: string) => `/docs/${filename}`
-
 const D = {
   certidaoCasamento: {
     label: 'Certidão Casamento e Divorcio Odette',
-    url: pdfUrl('Certidão Casamento e Divorcio Odette.pdf'),
+    url: 'https://drive.google.com/open?id=1TXBRK1gd_9Ws9cyqb4GR942AgGhhEvK6',
   },
   acordaoInterdicao: {
     label: 'Acordao Sentença interdição',
-    url: pdfUrl('Acordao Sentença interdição.pdf'),
+    url: 'https://drive.google.com/open?id=1kKnTVmBfThznpTqdtIv-t85diHRoAiY8',
   },
   escrituraUniao: {
     label: 'Escritura Uniao Estavel Raquel',
-    url: pdfUrl('Escritura Uniao Estavel Raquel.pdf'),
+    url: 'https://drive.google.com/open?id=1znpmtkXTQvlw1oHkQs-5x2y0FUEtQw6Y',
   },
   sentencaCuratela: {
     label: 'sentença curatela (1)',
-    url: pdfUrl('sentença curatela (1).pdf'),
+    url: 'https://drive.google.com/open?id=1kvreNxlTnWamp0csc8AKdsKlb92IuGH1',
   },
   sentencaInterdicao: {
     label: 'Sentença interdição',
-    url: pdfUrl('Sentença interdição.pdf'),
+    url: 'https://drive.google.com/open?id=1BosEtVjLoTWQ9rtUrxNR5OGmRQa2NbmD',
   },
   testamentoOdette: {
     label: 'Testamento e Revogacao Testamento 9.10.2017 Odette',
-    url: pdfUrl('Testamento e Revogacao Testamento 9.10.2017 Odette.pdf'),
+    url: 'https://drive.google.com/open?id=1QkQO126suuCd5KELvxOkr9y-5bf-Yw_8',
   },
   partilhaOdette: {
     label: 'Partilha Odette',
-    url: pdfUrl('Partilha Odette.pdf'),
+    url: 'https://drive.google.com/open?id=1pQDyRO2jQxGh7Frvac0xga_KVZCThXpg',
   },
   sobrepartilhaOdette: {
     label: 'Sobrepartilha Odette',
-    url: pdfUrl('Sobrepartilha Odette.pdf'),
+    url: 'https://drive.google.com/open?id=1jjm_pgptIqDeGLSr3sP78FoW6ea-uMdV',
   },
 }
+
 
 interface RowData {
   year: string

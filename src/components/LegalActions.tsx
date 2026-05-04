@@ -4,11 +4,9 @@ const imgScroll = 'https://www.figma.com/api/mcp/asset/2be2ac46-d7f4-4209-b5f4-3
 const imgBookOpenText = 'https://www.figma.com/api/mcp/asset/57306c0f-6c02-431b-8e1e-9205684c389f'
 const imgReceiptX = 'https://www.figma.com/api/mcp/asset/184a2815-b1f8-46d0-b76e-1c10f82f77c8'
 
-const pdfUrl = (filename: string) => `/docs/${filename}`
-
-const URL_INVENTARIO       = pdfUrl('Inventário 1093482-39.2024.8.26.0100 - copia integral - 27.4.2026.pdf')
-const URL_REGISTRO_TEST    = pdfUrl('Registro Testamento Raquel - Inicial.pdf')
-const URL_NULIDADE_TEST    = pdfUrl('Nulidade de Testamento - Inicial.pdf')
+const URL_INVENTARIO    = 'https://drive.google.com/open?id=1tol-Bq1z8vsA9i81D8jan9HkERmwPRZi'
+const URL_REGISTRO_TEST = 'https://drive.google.com/open?id=1tol-Bq1z8vsA9i81D8jan9HkERmwPRZi'
+const URL_NULIDADE_TEST = 'https://drive.google.com/open?id=1Qgv3U59lnf7r4Af6SS4jCm0PA5B2y5Sr'
 
 function DocPill({ label, url }: { label: string; url: string }) {
   return (

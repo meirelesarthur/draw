@@ -1,7 +1,7 @@
 import styles from './Header.module.css'
 import setaLaranja from '../assets/seta-laranja.png'
 
-const pdfUrl = (filename: string) => `/docs/${filename}`
+const TESTAMENTO_RAQUEL = 'https://drive.google.com/open?id=1cIkhpcjBzz-INZV-izhJHB6ZwO15D5IC'
 
 export default function Header() {
   return (
@@ -15,7 +15,7 @@ export default function Header() {
       </div>
 
       <a
-        href={pdfUrl('Testamento 8.12.2017 - RAQUEL.pdf')}
+        href={TESTAMENTO_RAQUEL}
         target="_blank"
         rel="noopener noreferrer"
         className={styles.testamentCard}
