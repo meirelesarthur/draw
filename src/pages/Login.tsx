@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { verificarSenha, autenticar, isAutenticado } from '../auth/auth'
 import LoadingScreen from '../components/LoadingScreen'
+import logoDraw from '../assets/logo-draw.svg'
 import styles from './Login.module.css'
 
 export default function Login() {
@@ -47,8 +48,7 @@ export default function Login() {
         <div className={styles.left}>
           <div className={styles.leftTop}>
             <div className={styles.brand}>
-              <span className={styles.brandMark}>DTL</span>
-              <span className={styles.brandName}>Draw the Law</span>
+              <img src={logoDraw} alt="Draw the Law" className={styles.brandLogoImg} />
             </div>
             <h1 className={styles.leftTitle}>
               Memorial<br />Jurídico<br />Digital
@@ -77,8 +77,9 @@ export default function Login() {
 
             <div className={styles.rightHeader}>
               <div className={styles.rightLogo}>
-                <div className={styles.rightLogoMark}>DTL</div>
-                <span className={styles.rightLogoName}>NERY Advogados</span>
+                <div className={styles.rightLogoWrap}>
+                  <img src={logoDraw} alt="Draw the Law" className={styles.rightLogoImg} />
+                </div>
               </div>
               <h2 className={styles.cardTitle}>Bem-vindo de volta</h2>
               <p className={styles.cardEyebrow}>Acesse sua conta para continuar</p>

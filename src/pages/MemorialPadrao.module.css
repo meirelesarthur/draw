@@ -36,10 +36,18 @@
   padding: 0 24px 24px;
 }
 
-.brandLogo {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
+.brandLogoWrap {
+  background: #071445;
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.brandLogoImg {
+  width: 124px;
+  height: auto;
+  display: block;
 }
 
 .brandNery {

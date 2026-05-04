@@ -32,14 +32,9 @@
   pointer-events: none;
 }
 
-.labelText {
-  font-family: var(--font-raleway);
-  font-weight: 800;
-  font-size: clamp(22px, 3.2vmin, 42px);
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: #fff;
-  text-align: center;
+.logo {
+  width: clamp(220px, 42vmin, 320px);
+  height: auto;
 }
 
 /* ── KEYFRAMES ── */

@@ -1,4 +1,5 @@
 import MagicRings from './MagicRings'
+import logoDraw from '../assets/logo-draw.svg'
 import styles from './LoadingScreen.module.css'
 
 interface Props {
@@ -28,7 +29,7 @@ export default function LoadingScreen({ exiting = false }: Props) {
           parallax={0}
         />
         <div className={styles.label}>
-          <span className={styles.labelText}>DRAW THE LAW</span>
+          <img src={logoDraw} alt="Draw the Law" className={styles.logo} />
         </div>
       </div>
     </div>

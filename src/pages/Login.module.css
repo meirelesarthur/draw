@@ -76,23 +76,9 @@
   margin-bottom: 48px;
 }
 
-.brandMark {
-  font-family: var(--font-raleway);
-  font-weight: 700;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  color: #8A4AF1;
-  background: rgba(138, 74, 241, 0.15);
-  padding: 5px 10px;
-  border-radius: 4px;
-}
-
-.brandName {
-  font-family: var(--font-raleway);
-  font-size: 12px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.38);
-  letter-spacing: 0.06em;
+.brandLogoImg {
+  width: 150px;
+  height: auto;
 }
 
 .leftTitle {
@@ -176,28 +162,17 @@
   margin-bottom: 28px;
 }
 
-.rightLogoMark {
-  width: 38px;
-  height: 38px;
-  background: #8A4AF1;
-  border-radius: 10px;
-  display: flex;
+.rightLogoWrap {
+  background: #071445;
+  border-radius: 8px;
+  padding: 8px 14px;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  font-family: var(--font-raleway);
-  font-weight: 800;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  color: #fff;
-  flex-shrink: 0;
 }
 
-.rightLogoName {
-  font-family: var(--font-raleway);
-  font-weight: 700;
-  font-size: 14px;
-  color: #071445;
-  letter-spacing: 0.02em;
+.rightLogoImg {
+  width: 100px;
+  height: auto;
 }
 
 .cardTitle {
