@@ -27,7 +27,7 @@ export default function Hub() {
           <div className={styles.optionIcon}>
             <PenTool size={48} strokeWidth={1.25} />
           </div>
-          <span className={styles.optionLabel}>Caso MARIALDO</span>
+          <span className={styles.optionLabel}>Caso JOSÉ</span>
           <h2 className={styles.optionTitle}>Memorial Personalizado</h2>
         </div>
       </button>

@@ -8,10 +8,10 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.left}>
         <h1 className={styles.title}>
-          Sucessão dos bens<br />deixados por <span>MARIALDO</span>
+          Sucessão dos bens<br />deixados por <span>JOSÉ</span>
         </h1>
         <div className={styles.titleDivider} />
-        <p className={styles.subtitle}>MEMORIAIS DE RAQUEL E MARIANA</p>
+        <p className={styles.subtitle}>MEMORIAIS DE RAQUEL E MARIA</p>
       </div>
 
       <a
@@ -36,7 +36,7 @@ export default function Header() {
         <div className={styles.principleBody}>
           <p className={styles.principleText}>
             Princípio norteador em todas as ações em trâmite é a preservação da
-            última vontade manifestada por <strong>MARIALDO</strong>
+            última vontade manifestada por <strong>JOSÉ</strong>
           </p>
         </div>
       </div>

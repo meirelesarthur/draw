@@ -57,7 +57,7 @@ const rows: RowData[] = [
     odette: (
       <div className={styles.cardRow}>
         <EventCard family="odette" rowItem docs={[D.certidaoCasamento]}>
-          <p><strong>9/6/62:</strong> MARIALDO casou com ODETTE <em>(comunhão universal de bens)</em></p>
+          <p><strong>9/6/62:</strong> JOSÉ casou com MARIA <em>(comunhão universal de bens)</em></p>
         </EventCard>
         <EventCard family="odette" rowItem>
           <p>Nasceram 3 filhos do casal: <strong>ARNALDO, MARIA CLÁUDIA E LUCIANA</strong></p>
@@ -75,10 +75,10 @@ const rows: RowData[] = [
     raquel: (
       <div className={styles.cardRow}>
         <EventCard family="raquel" rowItem>
-          <p>MARIALDO iniciou relacionamento com RAQUEL</p>
+          <p>JOSÉ iniciou relacionamento com RAQUEL</p>
         </EventCard>
         <EventCard family="raquel" rowItem rowItemLast>
-          <p>Nasceu 1 filha do casal: <strong>Mariana</strong> <em>(fato que era de conhecimento de todos os membros da família)</em></p>
+          <p>Nasceu 1 filha do casal: <strong>Maria</strong> <em>(fato que era de conhecimento de todos os membros da família)</em></p>
         </EventCard>
       </div>
     ),
@@ -93,10 +93,10 @@ const rows: RowData[] = [
           <p><strong>3/8/13:</strong> Filho ARNALDO faleceu em um trágico acidente aéreo <em>(juntamente com sua esposa e dois filhos)</em></p>
         </EventCard>
         <EventCard family="odette" rowItem>
-          <p>Relação de MARIALDO e ODETTE ficou fragilizada</p>
+          <p>Relação de JOSÉ e MARIA ficou fragilizada</p>
         </EventCard>
         <EventCard family="odette" rowItem rowItemLast>
-          <p>MARIALDO viveu desavenças com filha LUCIANA</p>
+          <p>JOSÉ viveu desavenças com filha LUCIANA</p>
         </EventCard>
       </div>
     ),
@@ -111,18 +111,18 @@ const rows: RowData[] = [
       <div className={styles.highlightRow}>
         <EventCard family="odette" highlight docs={[D.acordaoInterdicao]}>
           <p>
-            MARIALDO <strong>não concordou com o pedido de curatela</strong> e se opôs
+            JOSÉ <strong>não concordou com o pedido de curatela</strong> e se opôs
             à interdição, mas indicou que, caso deferida,{' '}
-            <strong>sua filha Mariana deveria ser a curadora</strong>
+            <strong>sua filha Maria deveria ser a curadora</strong>
           </p>
         </EventCard>
         <img src={setaLaranja} className={styles.highlightArrow} alt="" />
         <div className={styles.miniStack}>
           <EventCard family="odette">
-            <p>ODETTE ajuizou Ação de Curatela para interdição de MARIALDO</p>
+            <p>MARIA ajuizou Ação de Curatela para interdição de JOSÉ</p>
           </EventCard>
           <EventCard family="odette">
-            <p>MARIALDO ajuizou Ação de Divórcio</p>
+            <p>JOSÉ ajuizou Ação de Divórcio</p>
           </EventCard>
         </div>
       </div>
@@ -130,8 +130,8 @@ const rows: RowData[] = [
     raquel: (
       <EventCard family="raquel">
         <p>
-          <strong>Jun/15:</strong> MARIALDO passou a residir definitivamente com
-          RAQUEL e MARIANA em Joinville-SC
+          <strong>Jun/15:</strong> JOSÉ passou a residir definitivamente com
+          RAQUEL e MARIA em Joinville-SC
         </p>
       </EventCard>
     ),
@@ -145,26 +145,26 @@ const rows: RowData[] = [
     odette: (
       <div className={styles.cardRow}>
         <EventCard family="odette" rowItem docs={[D.sentencaCuratela]}>
-          <p>LUCIANA foi nomeada como curadora definitiva de MARIALDO na Ação de Curatela</p>
+          <p>LUCIANA foi nomeada como curadora definitiva de JOSÉ na Ação de Curatela</p>
         </EventCard>
         <EventCard family="odette" rowItem docs={[D.sentencaInterdicao]}>
           <p>
             O juízo da interdição reconheceu a capacidade de discernimento de
-            MARIALDO e determinou que LUCIANA ouvisse o pai quanto aos negócios da empresa
+            JOSÉ e determinou que LUCIANA ouvisse o pai quanto aos negócios da empresa
           </p>
         </EventCard>
         <EventCard family="odette" rowItem>
           <p>Divórcio litigioso foi decretado</p>
         </EventCard>
         <EventCard family="odette" rowItem rowItemLast docs={[D.testamentoOdette]}>
-          <p><strong>Out/17:</strong> MARIALDO revogou o testamento em favor de ODETTE</p>
+          <p><strong>Out/17:</strong> JOSÉ revogou o testamento em favor de MARIA</p>
         </EventCard>
       </div>
     ),
     raquel: (
       <EventCard family="raquel" docs={[D.escrituraUniao]}>
         <p>
-          <strong>Dez/2017:</strong> MARIALDO beneficiou sua companheira RAQUEL,
+          <strong>Dez/2017:</strong> JOSÉ beneficiou sua companheira RAQUEL,
           com a parte disponível dos bens e a nomeou como inventariante e
           testamenteira
         </p>
@@ -212,7 +212,7 @@ const rows: RowData[] = [
     raquel: (
       <EventCard family="raquel" docs={[D.escrituraUniao]}>
         <p>
-          MARIALDO oficializou sua união com RAQUEL por meio de uma escritura
+          JOSÉ oficializou sua união com RAQUEL por meio de uma escritura
           pública de união estável <em>(separação obrigatória de bens)</em>
         </p>
       </EventCard>
@@ -236,7 +236,7 @@ const rows: RowData[] = [
     dark: true,
     raquel: (
       <EventCard family="raquel" docs={[D.certidaoCasamento]}>
-        <p>MARIALDO faleceu em Joinville-SC ao lado de sua companheira RAQUEL</p>
+        <p>JOSÉ faleceu em Joinville-SC ao lado de sua companheira RAQUEL</p>
       </EventCard>
     ),
   },
@@ -247,7 +247,7 @@ export default function Timeline() {
     <section className={styles.section}>
       <div className={styles.columnLabels}>
         <div className={styles.labelOdette}>
-          Família construída com <strong>ODETTE</strong>
+          Família construída com <strong>MARIA</strong>
         </div>
         <div className={styles.labelCenter} />
         <div className={styles.labelRaquel}>

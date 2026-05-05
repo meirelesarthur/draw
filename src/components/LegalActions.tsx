@@ -37,7 +37,7 @@ export default function LegalActions() {
           <div className={styles.block}>
             <p className={styles.blockText}>
               <strong>Contexto:</strong> LUCIANA requereu a{' '}
-              <strong>abertura do inventário e sua nomeação como inventariante</strong>, desconsiderando a Escritura Pública de Testamento lavrada por MARIALDO em 8/12/2017.
+              <strong>abertura do inventário e sua nomeação como inventariante</strong>, desconsiderando a Escritura Pública de Testamento lavrada por JOSÉ em 8/12/2017.
             </p>
           </div>
 
@@ -50,7 +50,7 @@ export default function LegalActions() {
             <ul className={styles.list}>
               <li>Em 4/7/2024, LUCIANA foi formalmente nomeada inventariante do Espólio.</li>
               <li>
-                Em 3/10/2024, RAQUEL e MARIANA opuseram <strong>Embargos de Declaração</strong>, ainda pendentes de julgamento.
+                Em 3/10/2024, RAQUEL e MARIA opuseram <strong>Embargos de Declaração</strong>, ainda pendentes de julgamento.
               </li>
             </ul>
           </div>
@@ -58,7 +58,7 @@ export default function LegalActions() {
           <div className={styles.divider} />
 
           <div className={styles.requerimentos}>
-            <p className={styles.requerimentosTitle}>Requerimentos de RAQUEL E MARIANA:</p>
+            <p className={styles.requerimentosTitle}>Requerimentos de RAQUEL E MARIA:</p>
             <ol className={styles.list}>
               <li>
                 <strong>Substituição imediata da inventariança</strong>, com a <strong>nomeação de RAQUEL como inventariante;</strong>
@@ -83,8 +83,8 @@ export default function LegalActions() {
 
           <div className={styles.block}>
             <p className={styles.blockText}>
-              <strong>Contexto:</strong> RAQUEL e MARIANA ingressaram com ação para{' '}
-              <strong>registrar o testamento público realizado por MARIALDO</strong>.
+              <strong>Contexto:</strong> RAQUEL e MARIA ingressaram com ação para{' '}
+              <strong>registrar o testamento público realizado por JOSÉ</strong>.
             </p>
           </div>
 
@@ -104,10 +104,10 @@ export default function LegalActions() {
           <div className={styles.divider} />
 
           <div className={styles.requerimentos}>
-            <p className={styles.requerimentosTitle}>Pedidos de RAQUEL E MARIANA:</p>
+            <p className={styles.requerimentosTitle}>Pedidos de RAQUEL E MARIA:</p>
             <ol className={styles.list}>
               <li>
-                <strong>Registro</strong>, arquivamento e <strong>cumprimento do testamento público</strong> lavrado por MARIALDO;
+                <strong>Registro</strong>, arquivamento e <strong>cumprimento do testamento público</strong> lavrado por JOSÉ;
               </li>
               <li>Nomeação de <strong>RAQUEL como testamenteira</strong>.</li>
             </ol>
@@ -128,8 +128,8 @@ export default function LegalActions() {
 
           <div className={styles.block}>
             <p className={styles.blockText}>
-              <strong>Contexto:</strong> ODETTE e LUCIANA ajuizaram ação para{' '}
-              <strong>contestar a última manifestação de vontade de MARIALDO</strong>, que deixou seus bens para sua companheira RAQUEL.
+              <strong>Contexto:</strong> MARIA e LUCIANA ajuizaram ação para{' '}
+              <strong>contestar a última manifestação de vontade de JOSÉ</strong>, que deixou seus bens para sua companheira RAQUEL.
             </p>
           </div>
 
@@ -141,7 +141,7 @@ export default function LegalActions() {
             </p>
             <ul className={styles.list}>
               <li>
-                Em 10/2/2025, RAQUEL e MARIANA <strong>contestaram</strong> a ação.
+                Em 10/2/2025, RAQUEL e MARIA <strong>contestaram</strong> a ação.
               </li>
             </ul>
           </div>
@@ -149,17 +149,17 @@ export default function LegalActions() {
           <div className={styles.divider} />
 
           <div className={styles.requerimentos}>
-            <p className={styles.requerimentosTitle}>Requerimentos de RAQUEL E MARIANA:</p>
+            <p className={styles.requerimentosTitle}>Requerimentos de RAQUEL E MARIA:</p>
             <p className={styles.subLabel}>Em Preliminar:</p>
             <ol className={styles.list}>
               <li>
                 <strong>Suspensão da demanda</strong> até o <strong>encerramento e trânsito em julgado da Ação de Abertura, Registro e Cumprimento de Testamento</strong>;
               </li>
               <li>
-                Reconhecimento da <strong>decadência do direito de ODETTE e LUCIANA</strong> de postular a anulação (CPC, art. 487, II);
+                Reconhecimento da <strong>decadência do direito de MARIA e LUCIANA</strong> de postular a anulação (CPC, art. 487, II);
               </li>
               <li>
-                Reconhecimento da <strong>ilegitimidade de ODETTE</strong> para postular a anulação da Escritura de Testamento lavrada em 8/12/2017 (CPC, art. 485, VI).
+                Reconhecimento da <strong>ilegitimidade de MARIA</strong> para postular a anulação da Escritura de Testamento lavrada em 8/12/2017 (CPC, art. 485, VI).
               </li>
             </ol>
             <p className={styles.subLabel}>No Mérito:</p>
