@@ -38,6 +38,10 @@ const D = {
     label: 'Sobrepartilha Odette',
     url: 'https://drive.google.com/open?id=1jjm_pgptIqDeGLSr3sP78FoW6ea-uMdV',
   },
+  certidaoObito: {
+    label: 'Certidão de Óbito',
+    url: 'https://drive.google.com/file/d/1uHb16ov0bqzZdH8RsyAWalKx0Um6edsi/view?usp=sharing',
+  },
 }
 
 
@@ -235,7 +239,7 @@ const rows: RowData[] = [
     subLabel: 'Falecimento',
     dark: true,
     raquel: (
-      <EventCard family="raquel" docs={[D.certidaoCasamento]}>
+      <EventCard family="raquel" docs={[D.certidaoObito]}>
         <p>JOSÉ faleceu em Joinville-SC ao lado de sua companheira RAQUEL</p>
       </EventCard>
     ),
