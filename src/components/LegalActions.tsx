@@ -1,4 +1,4 @@
-import { ScrollText, BookOpenText, ReceiptX } from 'lucide-react'
+import { ScrollText, BookOpenText, Receipt } from 'lucide-react'
 import styles from './LegalActions.module.css'
 
 const URL_INVENTARIO    = 'https://drive.google.com/open?id=1tol-Bq1z8vsA9i81D8jan9HkERmwPRZi'
@@ -117,7 +117,7 @@ export default function LegalActions() {
         {/* (iii) Ação Declaratória */}
         <div className={[styles.actionColumn, styles.gray].join(' ')}>
           <div className={styles.actionHeader}>
-            <ReceiptX size={40} style={{ flexShrink: 0 }} />
+            <Receipt size={40} style={{ flexShrink: 0 }} />
             <h3 className={styles.actionTitle}>
               (iii) Ação Declaratória de Nulidade de Testamento
             </h3>
