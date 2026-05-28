@@ -1,8 +1,7 @@
+import { Activity } from 'lucide-react'
 import styles from './Timeline.module.css'
 import EventCard from './EventCard'
 import setaLaranja from '../assets/seta-laranja.png'
-
-const imgPulse = 'https://www.figma.com/api/mcp/asset/ec82c8bb-31a3-4dd3-a719-c80976f6409f'
 
 // ── DOCUMENT LINKS ────────────────────────────────────────────────────────────
 const D = {
@@ -182,7 +181,7 @@ const rows: RowData[] = [
     ghost: true,
     odette: (
       <div className={styles.ghostBlock}>
-        <img src={imgPulse} alt="" className={styles.pulse} />
+        <Activity size={34} className={styles.pulse} />
         <EventCard family="odette" highlight docs={[D.acordaoInterdicao]}>
           <p>
             Diante da melhora significativa de seu estado de saúde,{' '}

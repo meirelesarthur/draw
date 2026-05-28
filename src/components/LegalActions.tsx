@@ -1,8 +1,5 @@
+import { ScrollText, BookOpenText, ReceiptX } from 'lucide-react'
 import styles from './LegalActions.module.css'
-
-const imgScroll = 'https://www.figma.com/api/mcp/asset/2be2ac46-d7f4-4209-b5f4-36820740c081'
-const imgBookOpenText = 'https://www.figma.com/api/mcp/asset/57306c0f-6c02-431b-8e1e-9205684c389f'
-const imgReceiptX = 'https://www.figma.com/api/mcp/asset/184a2815-b1f8-46d0-b76e-1c10f82f77c8'
 
 const URL_INVENTARIO    = 'https://drive.google.com/open?id=1tol-Bq1z8vsA9i81D8jan9HkERmwPRZi'
 const URL_REGISTRO_TEST = 'https://drive.google.com/open?id=1tol-Bq1z8vsA9i81D8jan9HkERmwPRZi'
@@ -30,7 +27,7 @@ export default function LegalActions() {
         {/* (i) Inventário */}
         <div className={[styles.actionColumn, styles.gray].join(' ')}>
           <div className={styles.actionHeader}>
-            <img src={imgScroll} alt="" className={styles.icon} />
+            <ScrollText size={40} style={{ flexShrink: 0 }} />
             <h3 className={styles.actionTitle}>(i) Inventário</h3>
           </div>
 
@@ -75,7 +72,7 @@ export default function LegalActions() {
         {/* (ii) Ação de Abertura */}
         <div className={[styles.actionColumn, styles.peach].join(' ')}>
           <div className={styles.actionHeader}>
-            <img src={imgBookOpenText} alt="" className={styles.icon} />
+            <BookOpenText size={40} style={{ flexShrink: 0 }} />
             <h3 className={styles.actionTitle}>
               (ii) Ação de Abertura, Registro e Cumprimento de Testamento
             </h3>
@@ -120,7 +117,7 @@ export default function LegalActions() {
         {/* (iii) Ação Declaratória */}
         <div className={[styles.actionColumn, styles.gray].join(' ')}>
           <div className={styles.actionHeader}>
-            <img src={imgReceiptX} alt="" className={styles.icon} />
+            <ReceiptX size={40} style={{ flexShrink: 0 }} />
             <h3 className={styles.actionTitle}>
               (iii) Ação Declaratória de Nulidade de Testamento
             </h3>

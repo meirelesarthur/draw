@@ -5,6 +5,7 @@ import Header from '../components/Header'
 import Timeline from '../components/Timeline'
 import LegalActions from '../components/LegalActions'
 import styles from './Memorial.module.css'
+import logoNery from '../assets/logo-nery.png'
 
 type Tab = 'fluxograma' | 'documentos'
 type DocFilter = 'todos' | 'certidao' | 'peticao' | 'escritura' | 'decisao'
@@ -56,8 +57,6 @@ const FILTERS: { key: DocFilter; label: string }[] = [
   { key: 'decisao',  label: 'Decisões' },
 ]
 
-const imgLogo = 'https://www.figma.com/api/mcp/asset/09ddb02b-7248-4d58-81db-bd1b11274752'
-
 export default function Memorial() {
   const navigate = useNavigate()
   const [tab, setTab] = useState<Tab>('fluxograma')
@@ -77,7 +76,7 @@ export default function Memorial() {
       {/* ── TOPBAR ── */}
       <div className={styles.topbar}>
         <div className={styles.topbarBrand}>
-          <img src={imgLogo} alt="NERY Advogados" className={styles.topbarLogo} />
+          <img src={logoNery} alt="NERY Advogados" className={styles.topbarLogo} />
         </div>
 
         <div className={styles.topbarDivider} />
@@ -196,7 +195,7 @@ export default function Memorial() {
       )}
 
       <footer className={styles.footer}>
-        <img src={imgLogo} alt="NERY Advogados" className={styles.footerLogo} />
+        <img src={logoNery} alt="NERY Advogados" className={styles.footerLogo} />
       </footer>
     </div>
   )
